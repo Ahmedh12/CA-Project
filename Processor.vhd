@@ -624,7 +624,7 @@ BEGIN
         FD_OFFSET <= "0000000000000000" & FD_INSTRUCTION(31 DOWNTO 16);
 
         DecodingStage_Component : decode_stage PORT MAP(
-                int_decode => "00",
+                int_decode => "00", ---to be added from fetch stage
                 in_port_decode => FD_INPORT,
                 clock => clk,
                 reset => reset,
@@ -637,15 +637,15 @@ BEGIN
                 rsrc1_address_in => FD_RS1_address,
                 rsrc2_address_in => FD_RS2_address,
                 ------reg file-----
-                write_addr_reg_file => (OTHERS => '0'), --write back address --to be added from memory stage 
-                data_in_reg_file => (OTHERS => '0'), --write back value --to be added from memory stage 
-                mem_wb_reg_write => '0', --enable --to be added from memory stage 
+                write_addr_reg_file => WB_RDEST_OUT, --write back address --to be added from memory stage 
+                data_in_reg_file =>WB_VALUE_OUT, --write back value --to be added from memory stage 
+                mem_wb_reg_write => MEM_TO_REG_BUFF4_OUT, --enable --to be added from memory stage 
                 -------------------
                 offset_immediate => FD_OFFSET,
                 rdst_address => FD_Rdst_address,
                 jump_in => is_Jump_out, --to be added from execute stage
-                address_out_of_bound_in => '0', --to be added from memory stage;
-                empty_stack_in => '0', --to be added from memory stage;
+                address_out_of_bound_in =>ADDRESS_IS_INVALID_BUFF4_OUT, --to be added from memory stage;
+                empty_stack_in =>SP_ERROR_BUFF4_OUT, --to be added from memory stage;
 
                 --outputs
 
