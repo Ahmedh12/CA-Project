@@ -28,7 +28,8 @@ ENTITY FetchStage IS PORT (
     fetch_adderss : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     PC_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
+    inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+    SW_interrupt_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0));
 
 END FetchStage;
 
@@ -103,6 +104,8 @@ BEGIN
     SW_interrupt  <= "01" WHEN (mem_out(13 DOWNTO 9) = "11011" AND mem_out(2 DOWNTO 0) = "000") -- int 0 instruction
     ELSE "10" WHEN (mem_out(13 DOWNTO 9) = "11011" AND mem_out(2 DOWNTO 0) = "010")             --int 1 instruction
     ELSE "00"; --NO interrupt
+
+    SW_interrupt_out <= SW_interrupt;
 
     program_counter : PC PORT MAP(
         address_in => FC_out,

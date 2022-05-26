@@ -21,8 +21,6 @@ ENTITY control_unit IS
 		--rti: out std_logic;
 		--ret: out std_logic;
 		--call: out std_logic
-		 
-  		
 	);
 END control_unit;
 

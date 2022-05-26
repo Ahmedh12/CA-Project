@@ -183,6 +183,7 @@ BEGIN
                 EXEP_STACK_POINTER_OUT <= EXEP_STACK_POINTER;
 
                 flags_out <= flags_in;
+                
             END IF;
         END IF;
     END PROCESS;

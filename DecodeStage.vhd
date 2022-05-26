@@ -261,7 +261,7 @@ BEGIN
         data_out_offset_immediate => buf_offset_immediate_out,
         data_out_family_code => buf_family_code_out,
         data_out_function_code => buf_function_code_out,
-        in_port_id_ex_buffer_out => data_out_in_port_decode,
+        in_port_id_ex_buffer_out => buf_in_port_out,
         int_id_ex_buffer_out => data_out_int_decode
     );
     mux_component : MUX2x1 GENERIC MAP(

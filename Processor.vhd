@@ -67,7 +67,8 @@ ARCHITECTURE arch_Processor OF Processor IS
                 fetch_adderss : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
                 PC_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
                 instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-                inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0));
+                inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                SW_interrupt_out : OUT STD_LOGIC_Vector(1 downto 0));
 
         END COMPONENT;
         ------------------------- DECODE STAGE -------------------------
@@ -403,6 +404,7 @@ ARCHITECTURE arch_Processor OF Processor IS
         SIGNAL FD_INPORT : STD_LOGIC_VECTOR(31 DOWNTO 0);
         SIGNAL FD_SW_intrrupt : STD_LOGIC_VECTOR(1 DOWNTO 0);
         SIGNAL FS_FETCH_ADDRESS : STD_LOGIC_VECTOR(31 DOWNTO 0);
+        Signal FD_SW_INT_OUT : STD_LOGIC_VECTOR(1 DOWNTO 0);
         -------------------------------------SIGNALS OUT OF DECODE STAGE-----------------------------
         SIGNAL buf_family_code_out_signal : STD_LOGIC_VECTOR(1 DOWNTO 0);
         SIGNAL buf_func_code_out_signal : STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -442,6 +444,7 @@ ARCHITECTURE arch_Processor OF Processor IS
         ---SIGNAL freeze_pc_out_decode: std_logic; 
         ---SIGNAL flush_out_decode: std_logic;
         ---SIGNAL buffer_disable_out_decode: std_logic
+        SIGNAL data_out_in_port_decode_signal : STD_LOGIC_VECTOR(31 DOWNTO 0);
         SIGNAL MEM_WB_BUFF_MEMORY_VAL : STD_LOGIC_VECTOR(31 DOWNTO 0);
         SIGNAL EX_MEM_BUFF_ALU : STD_LOGIC_VECTOR(31 DOWNTO 0); --010
         SIGNAL MEM_WB_BUFF_ALU : STD_LOGIC_VECTOR(31 DOWNTO 0); --011
@@ -613,7 +616,8 @@ BEGIN
                 fetch_adderss => FS_FETCH_ADDRESS,
                 PC_OUT => FD_PC,
                 instruction => FD_INSTRUCTION,
-                inport_val_out => FD_INPORT
+                inport_val_out => FD_INPORT,
+                SW_interrupt_out=>FD_SW_INT_OUT
         );
         --Mapping the inputs to the decode stage
         FD_family_Code <= FD_INSTRUCTION(10 DOWNTO 9);
@@ -624,7 +628,7 @@ BEGIN
         FD_OFFSET <= "0000000000000000" & FD_INSTRUCTION(31 DOWNTO 16);
 
         DecodingStage_Component : decode_stage PORT MAP(
-                int_decode => "00", ---to be added from fetch stage
+                int_decode => FD_SW_INT_OUT, ---to be added from fetch stage
                 in_port_decode => FD_INPORT,
                 clock => clk,
                 reset => reset,
@@ -637,7 +641,7 @@ BEGIN
                 rsrc1_address_in => FD_RS1_address,
                 rsrc2_address_in => FD_RS2_address,
                 ------reg file-----
-                write_addr_reg_file => WB_RDEST_OUT, --write back address --to be added from memory stage 
+                write_addr_reg_file => R_DST_3_BITS_BUFF4_OUT, --write back address --to be added from memory stage 
                 data_in_reg_file =>WB_VALUE_OUT, --write back value --to be added from memory stage 
                 mem_wb_reg_write => MEM_TO_REG_BUFF4_OUT, --enable --to be added from memory stage 
                 -------------------
@@ -672,6 +676,7 @@ BEGIN
                 data_out_ldm_decode => data_out_ldm_decode_signal,
                 data_out_pc_to_stack_decode => data_out_pc_to_stack_decode_signal,
                 data_out_mem_to_pc_decode => data_out_mem_to_pc_decode_signal,
+                data_out_in_port_decode => EX_MEM_PORT_IN,
                 data_out_rti_decode => data_out_rti_decode_signal,
                 data_out_ret_decode => data_out_ret_decode_signal,
                 data_out_call_decode => data_out_call_decode_signal,
@@ -684,17 +689,12 @@ BEGIN
         OP_CODE_DATA <= buf_family_code_out_signal & buf_func_code_out_signal;
 
         EXECUTE_STAGE : EX_STAGE PORT MAP(
-
                 buf_rsrc1_signal,
-
                 MEM_WB_BUFF_MEMORY_VAL,
-
                 EX_MEM_BUFF_ALU,
                 MEM_WB_BUFF_ALU,
-
                 EX_MEM_BUFF_IMM,
                 MEM_WB_BUFF_IMM,
-
                 EX_MEM_PORT_IN,
                 MEM_WB_PORT_IN,
                 buf_rsrc2_signal,
@@ -765,8 +765,6 @@ BEGIN
         );
 
         ------------------------------------Memory Stage-------------------------------------------
-        --STACK_DATA_OUT from Execute check with taw7eed 
-        --ask taw7eed to propagate ccr e.g. flag
         MEMORY_STAGE : memory_stage_project PORT MAP(
                 clk => clk,
                 rst => reset,
