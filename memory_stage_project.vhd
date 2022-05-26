@@ -137,8 +137,8 @@ ARCHITECTURE arch_memory_stage_project OF memory_stage_project IS
 		port_read_out : OUT STD_LOGIC;
 		mem_to_reg_out : OUT STD_LOGIC;
 		mem_to_pc_out : OUT STD_LOGIC;
-		inPort_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		inPort_read_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		inPort_value_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+		inPort_value_read_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 		);
 
 	END COMPONENT memory_buffer;
@@ -201,8 +201,8 @@ BEGIN
 		port_read_out => port_read_out_buff4,
 		mem_to_reg_out => mem_to_reg_out_buff4,
 		mem_to_pc_out => mem_to_pc_out_buff4,
-		inPort_read_in => inPort_read_in,
-		inPort_read_out => inPort_read_out_buff4
+		inPort_value_read_in => inPort_read_in,
+		inPort_value_read_out => inPort_read_out_buff4
 	);
 
 END arch_memory_stage_project;
