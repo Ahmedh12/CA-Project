@@ -354,7 +354,10 @@ ARCHITECTURE arch_Processor OF Processor IS
                         load_imm_out_buff4 : OUT STD_LOGIC;
                         port_read_out_buff4 : OUT STD_LOGIC;
                         mem_to_reg_out_buff4 : OUT STD_LOGIC;
-                        mem_to_pc_out_buff4 : OUT STD_LOGIC);
+                        mem_to_pc_out_buff4 : OUT STD_LOGIC;
+                        inPort_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+                        );
 
         END COMPONENT memory_stage_project;
         ------------------------- WRITE BACK STAGE -------------------------
@@ -560,6 +563,7 @@ ARCHITECTURE arch_Processor OF Processor IS
         SIGNAL PORT_READ_BUFF4_OUT : STD_LOGIC;
         SIGNAL MEM_TO_REG_BUFF4_OUT : STD_LOGIC;
         SIGNAL MEM_TO_PC_BUFF4_OUT : STD_LOGIC;
+        SIGNAL INPORT_READ_BUFF4_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         -----------------------WB Signals-----------------------
         SIGNAL WB_ERROR_PC_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         SIGNAL WB_VALUE_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -823,7 +827,10 @@ BEGIN
                 load_imm_out_buff4 => LOAD_IMM_BUFF4_OUT,
                 port_read_out_buff4 => PORT_READ_BUFF4_OUT,
                 mem_to_reg_out_buff4 => MEM_TO_REG_BUFF4_OUT,
-                mem_to_pc_out_buff4 => MEM_TO_PC_BUFF4_OUT);
+                mem_to_pc_out_buff4 => MEM_TO_PC_BUFF4_OUT,
+                inPort_read_in => OUTOUT_PORT_IN,
+		inPort_read_out_buff4 => INPORT_READ_BUFF4_OUT
+                );
 
         ------------------------------------Write Back Stage-------------------------------------------
         WRITE_BACK_STAGE : WB_STAGE port map(
@@ -840,7 +847,7 @@ BEGIN
 		MEMORY_DATA => DATA_FROM_MEMORY_BUFF4_OUT,
 		ALU_RESULT => ALU_RESULT_BUFF4_OUT,
 		IMM => IMM_OR_OFFSET_BUFF4_OUT,
-		IN_VECTOR => (others=>'0'),
+		IN_VECTOR => INPORT_READ_BUFF4_OUT,
 
 		PC => PC_BUFF4_OUT,
 
