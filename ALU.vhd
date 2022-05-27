@@ -60,22 +60,22 @@ BEGIN
       U_ADDER : Nbit_adder GENERIC MAP(32) PORT MAP(Data1, Data2, '0', ADDER_INTERMDIATE, CARRY_OUT);
       U_ADDER2 : Nbit_adder GENERIC MAP(32) PORT MAP(Data1, "00000000000000000000000000000001", '0', ADDER_INTERMDIATE2, CARRY_OUT2);
       u_SUBTRACTOR : Nbit_subtractor GENERIC MAP(32) PORT MAP(Data1, Data2, '0', SUBTRACTOR_INTERMDIATE, BORROW_OUT);
-      ALU_Result <= NOT Data1 WHEN EN = '1' AND OP_CODE = "00100" -- NOT Rdst -done
+      ALU_Result <= NOT Data1 WHEN EN = '1' AND OP_CODE = "00001" -- NOT Rdst -done
             ELSE
             ADDER_INTERMDIATE2 WHEN EN = '1' AND OP_CODE = "00010" -- INC Rdst -done
             ELSE
-            Data1 WHEN EN = '1' AND OP_CODE = "00110" -- MOV Rsrc, Rdst
+            Data1 WHEN EN = '1' AND OP_CODE = "00011" -- MOV Rsrc, Rdst
             --ELSE WHEN EN = '1' and OP_CODE = '01001' -- SWAP Rsrc, Rdst-------------ask
             ELSE
-            ADDER_INTERMDIATE WHEN EN = '1' AND OP_CODE = "00001" -- ADD Rdst, Rsrc1, Rscr2 -done
+            ADDER_INTERMDIATE WHEN EN = '1' AND OP_CODE = "00100" -- ADD Rdst, Rsrc1, Rscr2 -done
             ELSE
-            SUBTRACTOR_INTERMDIATE WHEN EN = '1' AND OP_CODE = "00011" -- SUB Rdst, Rsrc1, Rsrc2 -done
+            SUBTRACTOR_INTERMDIATE WHEN EN = '1' AND OP_CODE = "00110" -- SUB Rdst, Rsrc1, Rsrc2 -done
             ELSE
             (Data2 AND Data1) WHEN EN = '1' AND OP_CODE = "00101" -- AND Rdst, Rsrc1, Rsrc2 -done
             ELSE
             ADDER_INTERMDIATE WHEN EN = '1' AND OP_CODE = "00111" -- IADD Rdst, Rsrc, Imm -done
             ELSE
-            Data2 WHEN EN = '1' AND OP_CODE = "01011" -- LDM Rdst, Imm 
+            Data2 WHEN EN = '1' AND OP_CODE = "01110" -- LDM Rdst, Imm 
             ELSE
             ADDER_INTERMDIATE WHEN EN = '1' AND OP_CODE = "01010" -- LDD Rdst, offset(Rsrc) -done
             ELSE
@@ -93,15 +93,15 @@ BEGIN
             IF EN = '1' THEN
                   ----------------------------- ZERO FLAGE --------------------------------------------       
 
-                  IF (OP_CODE = "00001" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE)) = 0) THEN -- ADD Rdst, Rsrc1, Rscr2
+                  IF (OP_CODE = "00100" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE)) = 0) THEN -- ADD Rdst, Rsrc1, Rscr2
                         CRC_ORIGINAL_DATA(0) <= '1';
                   ELSIF (OP_CODE = "00111" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE)) = 0) THEN --IADD Rdst,Imm
                         CRC_ORIGINAL_DATA(0) <= '1';
-                  ELSIF (OP_CODE = "00011" AND EN = '1' AND to_integer(signed(SUBTRACTOR_INTERMDIATE)) = 0) THEN -- SUB Rsrc, Rdst
+                  ELSIF (OP_CODE = "00110" AND EN = '1' AND to_integer(signed(SUBTRACTOR_INTERMDIATE)) = 0) THEN -- SUB Rsrc, Rdst
                         CRC_ORIGINAL_DATA(0) <= '1';
                   ELSIF (OP_CODE = "00101" AND EN = '1' AND to_integer(signed(Data1 AND Data2)) = 0) THEN -- AND Rsrc, Rdst
                         CRC_ORIGINAL_DATA(0) <= '1';
-                  ELSIF (OP_CODE = "00100" AND EN = '1' AND to_integer(signed(NOT Data1)) = 0) THEN -- NOT Rdst
+                  ELSIF (OP_CODE = "00001" AND EN = '1' AND to_integer(signed(NOT Data1)) = 0) THEN -- NOT Rdst
                         CRC_ORIGINAL_DATA(0) <= '1';
                   ELSIF (OP_CODE = "00010" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE2)) = 0) THEN -- INC Rdst 
                         CRC_ORIGINAL_DATA(0) <= '1';
@@ -112,15 +112,15 @@ BEGIN
                   END IF;
                   -----------------------  NEGATIVE FLAGE --------------------------------------------       
 
-                  IF (OP_CODE = "00001" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE)) < 0) THEN -- ADD Rsrc, Rdst
+                  IF (OP_CODE = "00100" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE)) < 0) THEN -- ADD Rsrc, Rdst
                         CRC_ORIGINAL_DATA(1) <= '1';
                   ELSIF (OP_CODE = "00111" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE)) < 0) THEN --IADD Rdst,Imm
                         CRC_ORIGINAL_DATA(1) <= '1';
-                  ELSIF (OP_CODE = "00011" AND EN = '1' AND to_integer(signed(SUBTRACTOR_INTERMDIATE)) < 0) THEN -- SUB Rsrc, Rdst
+                  ELSIF (OP_CODE = "00110" AND EN = '1' AND to_integer(signed(SUBTRACTOR_INTERMDIATE)) < 0) THEN -- SUB Rsrc, Rdst
                         CRC_ORIGINAL_DATA(1) <= '1';
                   ELSIF (OP_CODE = "00101" AND EN = '1' AND to_integer(signed(Data1 AND Data2)) < 0) THEN -- AND Rsrc, Rdst
                         CRC_ORIGINAL_DATA(1) <= '1';
-                  ELSIF (OP_CODE = "00100" AND EN = '1' AND to_integer(signed(NOT Data2)) < 0) THEN -- NOT Rdst 
+                  ELSIF (OP_CODE = "00001" AND EN = '1' AND to_integer(signed(NOT Data2)) < 0) THEN -- NOT Rdst 
                         CRC_ORIGINAL_DATA(1) <= '1';
                   ELSIF (OP_CODE = "00010" AND EN = '1' AND to_integer(signed(ADDER_INTERMDIATE2)) < 0) THEN-- INC Rdst 
                         CRC_ORIGINAL_DATA(1) <= '1';
@@ -130,11 +130,11 @@ BEGIN
                         CRC_ORIGINAL_DATA(1) <= '0';
                   END IF;
                   ----------------------------- CARRY FLAGE -------------------------------------------
-                  IF (OP_CODE = "00001" AND EN = '1') THEN -- ADD Rsrc, Rdst
+                  IF (OP_CODE = "00100" AND EN = '1') THEN -- ADD Rsrc, Rdst
                         CRC_ORIGINAL_DATA(2) <= CARRY_OUT;
                   ELSIF (OP_CODE = "00111" AND EN = '1') THEN--IADD Rdst,Imm 
                         CRC_ORIGINAL_DATA(2) <= CARRY_OUT;
-                  ELSIF (OP_CODE = "00011" AND EN = '1') THEN-- SUB Rsrc, Rdst	
+                  ELSIF (OP_CODE = "00110" AND EN = '1') THEN-- SUB Rsrc, Rdst	
                         CRC_ORIGINAL_DATA(2) <= BORROW_OUT;
                   ELSIF (OP_CODE = "00010" AND EN = '1') THEN-- iNC
                         CRC_ORIGINAL_DATA(2) <= CARRY_OUT2;
@@ -145,13 +145,15 @@ BEGIN
                   END IF;
             END IF;
 
+            CRC_ORIGINAL_DATA(3) <= '0';
+
             IF OP_CODE = "00000" THEN
                   CRC_ORIGINAL_DATA <= FLAGS_IN OR "0100";
             END IF;
 
       END PROCESS;
 
-      FLAGS <= CRC_ORIGINAL_DATA WHEN ((EN = '1') AND (OP_CODE = "00001" OR OP_CODE = "00111" OR OP_CODE = "00011" OR OP_CODE = "00101" OR OP_CODE = "00100" OR OP_CODE = "00010" OR OP_CODE = "10011")) OR OP_CODE = "01010" OR OP_CODE = "00000" --MOV/LDM
+      FLAGS <= CRC_ORIGINAL_DATA WHEN ((EN = '1') AND (OP_CODE = "00001" OR OP_CODE = "00111" OR OP_CODE = "00011" OR OP_CODE = "00101" OR OP_CODE = "00100" OR OP_CODE = "00010" OR OP_CODE = "00110")) OR OP_CODE = "01010" OR OP_CODE = "00000" OR OP_CODE = "01110" --MOV/LDM
             ELSE
             FLAGS_IN;
 

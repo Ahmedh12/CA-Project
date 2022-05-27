@@ -10,11 +10,11 @@ z2
 cModel Technology
 dC:/intelFPGA_lite/20.1
 Ealu
-Z0 w1653583977
+Z0 w1653638205
 Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 523
+!i122 538
 Z4 dC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project
 Z5 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ALU.vhd
 Z6 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ALU.vhd
@@ -24,9 +24,9 @@ V<d7=ObM@Km8TES^JfR2aD2
 !s100 O[2YHM7N_jJ7cGa186]XW2
 Z7 OV;C;2020.1;71
 32
-Z8 !s110 1653590188
+Z8 !s110 1653641490
 !i10b 1
-Z9 !s108 1653590188.000000
+Z9 !s108 1653641490.000000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ALU.vhd|
 Z11 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ALU.vhd|
 !i113 1
@@ -37,11 +37,11 @@ R1
 R2
 R3
 DEx4 work 3 alu 0 22 <d7=ObM@Km8TES^JfR2aD2
-!i122 523
+!i122 538
 l57
-L19 140
-VCS<:blh@9CL8DBgYFFEdR1
-!s100 _7aG;ZkO>AZhzZ>TO`3on3
+L19 142
+Venfj;K?W=`7KhW83eESIz1
+!s100 W<^XEka3`W9j;D1GHQ46i3
 R7
 32
 R8
@@ -217,25 +217,25 @@ R40
 R21
 R13
 Eex_stage
-Z41 w1653589248
+Z41 w1653641509
 R1
 R2
 R3
-!i122 509
+!i122 539
 R4
 Z42 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/EX_STAGE.vhd
 Z43 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/EX_STAGE.vhd
 l0
 L5 1
-VYZW;G5RMJ7^PLSDaS:57Y0
-!s100 lW2FNoHJo5HGIG:BB=>:o3
+V?j9K5U;Wfk4K]`>HYOcKB0
+!s100 WX_Nf^bzc5o8jCQNNCP@L1
 R7
 32
-R25
+Z44 !s110 1653641515
 !i10b 1
-R38
-Z44 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/EX_STAGE.vhd|
-Z45 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/EX_STAGE.vhd|
+Z45 !s108 1653641515.000000
+Z46 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/EX_STAGE.vhd|
+Z47 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/EX_STAGE.vhd|
 !i113 1
 R21
 R13
@@ -243,30 +243,30 @@ Aarch_execute_stage
 R1
 R2
 R3
-DEx4 work 8 ex_stage 0 22 YZW;G5RMJ7^PLSDaS:57Y0
-!i122 509
-l397
-L166 311
-VKmNI[6?1WS<_0XS09DnUA3
-!s100 >Zh;SY>GgV=B@<coCC9`X2
+DEx4 work 8 ex_stage 0 22 ?j9K5U;Wfk4K]`>HYOcKB0
+!i122 539
+l396
+L168 309
+VP6`A0ecOB`deRZWO;gZaQ0
+!s100 6K_Lg>LNR;kW_[>l=3L4d0
 R7
 32
-R25
-!i10b 1
-R38
 R44
+!i10b 1
 R45
+R46
+R47
 !i113 1
 R21
 R13
 Eexecute_memory_buffer
-Z46 w1653588987
+Z48 w1653588987
 R2
 R3
 !i122 510
 R4
-Z47 8C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd
-Z48 FC:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd
+Z49 8C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd
+Z50 FC:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd
 l0
 L3 1
 Vm^9ZZd<jdMCk][hMkd1j63
@@ -276,8 +276,8 @@ R7
 R25
 !i10b 1
 R38
-Z49 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd|
-Z50 !s107 C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd|
+Z51 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd|
+Z52 !s107 C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\EXECUTE_MEMORY_BUFFER.vhd|
 !i113 1
 R21
 R13
@@ -295,31 +295,31 @@ R7
 R25
 !i10b 1
 R38
-R49
-R50
+R51
+R52
 !i113 1
 R21
 R13
 Efd_buffer
-Z51 w1653291322
+Z53 w1653291322
 R1
 R2
 R3
 !i122 497
 R4
-Z52 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd
-Z53 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd
+Z54 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd
+Z55 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd
 l0
 L5 1
 VBY[Ah[Va7_hL=OXmBaM5W2
 !s100 54Tcbba_Ya?dPO0l@ic`i3
 R7
 32
-Z54 !s110 1653590183
+Z56 !s110 1653590183
 !i10b 1
-Z55 !s108 1653590182.000000
-Z56 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd|
-Z57 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd|
+Z57 !s108 1653590182.000000
+Z58 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd|
+Z59 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FD_Buffer.vhd|
 !i113 1
 R21
 R13
@@ -335,34 +335,34 @@ VFZ]SFTMF4zGdeeD:NVCeL1
 !s100 LT?P[;N8aiEZm2DHQmhP_0
 R7
 32
-R54
-!i10b 1
-R55
 R56
+!i10b 1
 R57
+R58
+R59
 !i113 1
 R21
 R13
 Efetchcontrol
-Z58 w1653423383
+Z60 w1653423383
 R1
 R2
 R3
 !i122 498
 R4
-Z59 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd
-Z60 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd
+Z61 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd
+Z62 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd
 l0
 L5 1
 VTID6=5?cI14TGWXo3c]>C0
 !s100 T;Lc[lPG;`J41W3[?kE2R2
 R7
 32
-R54
+R56
 !i10b 1
-Z61 !s108 1653590183.000000
-Z62 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd|
-Z63 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd|
+Z63 !s108 1653590183.000000
+Z64 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd|
+Z65 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_control.vhd|
 !i113 1
 R21
 R13
@@ -378,23 +378,23 @@ V8JW;3GSbY5`mY><iPjaeB2
 !s100 66SI?Q8cManKZ74Wc3XD=1
 R7
 32
-R54
+R56
 !i10b 1
-R61
-R62
 R63
+R64
+R65
 !i113 1
 R21
 R13
 Efetchstage
-Z64 w1653576796
+Z66 w1653576796
 R1
 R2
 R3
 !i122 505
 R4
-Z65 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd
-Z66 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd
+Z67 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd
+Z68 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd
 l0
 L5 1
 V;TgZTim34Ygn7>T4ZOP6>0
@@ -404,8 +404,8 @@ R7
 R17
 !i10b 1
 R18
-Z67 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd|
-Z68 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd|
+Z69 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd|
+Z70 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/fetch_stage.vhd|
 !i113 1
 R21
 R13
@@ -424,31 +424,31 @@ R7
 R17
 !i10b 1
 R18
-R67
-R68
+R69
+R70
 !i113 1
 R21
 R13
 Eforward_unit
-Z69 w1653341333
+Z71 w1653341333
 R1
 R2
 R3
 !i122 524
 R4
-Z70 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd
-Z71 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd
+Z72 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd
+Z73 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd
 l0
 L5 1
 Vi]jhGVSfJA:=;2D1eNcZ12
 !s100 lNE74khc?4FFzO]F=If7R3
 R7
 32
-R8
+Z74 !s110 1653590188
 !i10b 1
-R9
-Z72 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd|
-Z73 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd|
+Z75 !s108 1653590188.000000
+Z76 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd|
+Z77 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/FORWARD_UNIT.vhd|
 !i113 1
 R12
 R13
@@ -464,11 +464,11 @@ VE5FG:@3HiMBXThDAU6oif3
 !s100 BCHEP=:9NNLN9n0;YNo7d2
 R7
 32
-R8
+R74
 !i10b 1
-R9
-R72
-R73
+R75
+R76
+R77
 !i113 1
 R12
 R13
@@ -478,8 +478,8 @@ R2
 R3
 !i122 511
 R4
-Z74 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd
-Z75 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd
+Z78 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd
+Z79 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd
 l0
 L7 1
 V<_kE9@cZaGaKH:DmLN=_i3
@@ -489,8 +489,8 @@ R7
 R25
 !i10b 1
 R38
-Z76 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd|
-Z77 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd|
+Z80 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd|
+Z81 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_falling.vhd|
 !i113 1
 R21
 R13
@@ -500,7 +500,7 @@ R3
 DEx4 work 24 generic_register_falling 0 22 <_kE9@cZaGaKH:DmLN=_i3
 !i122 511
 l21
-Z78 L20 13
+Z82 L20 13
 V@mZfo:DR1`XiTiToTYc[]3
 !s100 W93CE6RYiZSU65AFUQXoV2
 R7
@@ -508,8 +508,8 @@ R7
 R25
 !i10b 1
 R38
-R76
-R77
+R80
+R81
 !i113 1
 R21
 R13
@@ -519,8 +519,8 @@ R2
 R3
 !i122 512
 R4
-Z79 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd
-Z80 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd
+Z83 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd
+Z84 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd
 l0
 L7 1
 V5jWKT>[10z<A04Hl[JCQF3
@@ -530,8 +530,8 @@ R7
 R25
 !i10b 1
 R38
-Z81 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd|
-Z82 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd|
+Z85 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd|
+Z86 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/generic_register_rising.vhd|
 !i113 1
 R21
 R13
@@ -541,7 +541,7 @@ R3
 DEx4 work 23 generic_register_rising 0 22 5jWKT>[10z<A04Hl[JCQF3
 !i122 512
 l21
-R78
+R82
 VSDz[oK^YUAQIS9N]FnBoz3
 !s100 UcnDc8AgHfI7jW;88ic;n2
 R7
@@ -549,8 +549,8 @@ R7
 R25
 !i10b 1
 R38
-R81
-R82
+R85
+R86
 !i113 1
 R21
 R13
@@ -560,19 +560,19 @@ R2
 R3
 !i122 513
 R4
-Z83 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd
-Z84 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd
+Z87 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd
+Z88 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd
 l0
 L4 1
 VLYY[oRUQXC8IL2LcVBW7@0
 !s100 Gk;CGoVB0>m:3I_dlW:m43
 R7
 32
-Z85 !s110 1653590186
+Z89 !s110 1653590186
 !i10b 1
-Z86 !s108 1653590186.000000
-Z87 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd|
-Z88 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd|
+Z90 !s108 1653590186.000000
+Z91 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd|
+Z92 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/HazardDetectionUnit.vhd|
 !i113 1
 R21
 R13
@@ -587,22 +587,22 @@ VPmdYAcS0YYT3NDZNhim9_1
 !s100 Ifb:jXkM0b=[GVO0jX?QS1
 R7
 32
-R85
+R89
 !i10b 1
-R86
-R87
-R88
+R90
+R91
+R92
 !i113 1
 R21
 R13
 Eid_ex_buffer
-Z89 w1653312693
+Z93 w1653312693
 R2
 R3
 !i122 521
 R4
-Z90 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd
-Z91 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd
+Z94 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd
+Z95 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd
 l0
 L4 1
 V[F^QCFe;cOgRH2WQZmZ8R1
@@ -612,8 +612,8 @@ R7
 R31
 !i10b 1
 R32
-Z92 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd|
-Z93 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd|
+Z96 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd|
+Z97 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/ID_EX_Buffer.vhd|
 !i113 1
 R12
 R13
@@ -631,8 +631,8 @@ R7
 R31
 !i10b 1
 R32
-R92
-R93
+R96
+R97
 !i113 1
 R12
 R13
@@ -643,19 +643,19 @@ R2
 R3
 !i122 514
 R4
-Z94 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd
-Z95 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd
+Z98 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd
+Z99 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd
 l0
 L5 1
 VgLMPVZZ:o1f:DMfm0^83d3
 !s100 C2R_23kmDXJSYDNmA;;ll3
 R7
 32
-R85
+R89
 !i10b 1
-R86
-Z96 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd|
-Z97 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd|
+R90
+Z100 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd|
+Z101 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/JMP_DETECT_UNIT.vhd|
 !i113 1
 R21
 R13
@@ -671,34 +671,34 @@ V@ejKjXO:47L^_eTWl]KE73
 !s100 g_hHFVQ9IXP2Y2i9ZgjWm2
 R7
 32
-R85
+R89
 !i10b 1
-R86
-R96
-R97
+R90
+R100
+R101
 !i113 1
 R21
 R13
 Ememory
-Z98 w1653287690
+Z102 w1653287690
 R1
 R2
 R3
 !i122 499
 R4
-Z99 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd
-Z100 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd
+Z103 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd
+Z104 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd
 l0
 L5 1
 Ve@6fdjcoJ1ihJ;Fg65k?B1
 !s100 iA0Z>^J_d`Sje_k7GQH=`2
 R7
 32
-R54
+R56
 !i10b 1
-R61
-Z101 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd|
-Z102 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd|
+R63
+Z105 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd|
+Z106 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Memory.vhd|
 !i113 1
 R21
 R13
@@ -714,34 +714,34 @@ V7BnFnoQRS24nGGAo7<mk53
 !s100 KRX>;PMoa^7GHU7CfJl1W2
 R7
 32
-R54
+R56
 !i10b 1
-R61
-R101
-R102
+R63
+R105
+R106
 !i113 1
 R21
 R13
 Ememory_buffer
-Z103 w1653551173
+Z107 w1653551173
 R1
 R2
 R3
 !i122 500
 R4
-Z104 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd
-Z105 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd
+Z108 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd
+Z109 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd
 l0
 L5 1
 VoGKQQEOJdKoNH:^:QPL`i2
 !s100 MO28];0hKiX@5;]8Dl@KY1
 R7
 32
-R54
+R56
 !i10b 1
-R61
-Z106 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd|
-Z107 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd|
+R63
+Z110 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd|
+Z111 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_buffer.vhd|
 !i113 1
 R21
 R13
@@ -757,34 +757,34 @@ V01T6f;Ui1e3oZoF^95>3i1
 !s100 5NkXGjnkKfSh:T]3TTogT2
 R7
 32
-R54
+R56
 !i10b 1
-R61
-R106
-R107
+R63
+R110
+R111
 !i113 1
 R21
 R13
 Ememory_stage_project
-Z108 w1653552173
+Z112 w1653552173
 R1
 R2
 R3
 !i122 501
 R4
-Z109 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd
-Z110 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd
+Z113 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd
+Z114 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd
 l0
 L5 1
 V;`bX7HZD8Y_OzXaIFGWMC3
 !s100 0lMh6HRfoGaz_]kPkHAA^3
 R7
 32
-R54
+R56
 !i10b 1
-R61
-Z111 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd|
-Z112 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd|
+R63
+Z115 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd|
+Z116 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_stage_project.vhd|
 !i113 1
 R21
 R13
@@ -800,23 +800,23 @@ VncOPbL`oaoZ1CjX1R3PhU2
 !s100 l;eabojmb91@;2RRNcedV0
 R7
 32
-R54
+R56
 !i10b 1
-R61
-R111
-R112
+R63
+R115
+R116
 !i113 1
 R21
 R13
 Ememory_validating_address
-Z113 w1653284458
+Z117 w1653284458
 R1
 R2
 R3
 !i122 502
 R4
-Z114 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd
-Z115 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd
+Z118 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd
+Z119 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd
 l0
 L5 1
 Vi^?bGie8XHeV0FM<UncDQ2
@@ -825,9 +825,9 @@ R7
 32
 R17
 !i10b 1
-R61
-Z116 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd|
-Z117 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd|
+R63
+Z120 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd|
+Z121 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/memory_validating_address.vhd|
 !i113 1
 R21
 R13
@@ -845,9 +845,9 @@ R7
 32
 R17
 !i10b 1
-R61
-R116
-R117
+R63
+R120
+R121
 !i113 1
 R21
 R13
@@ -857,19 +857,19 @@ R2
 R3
 !i122 515
 R4
-Z118 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd
-Z119 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd
+Z122 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd
+Z123 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd
 l0
 L4 1
 V=@>jFN7:XVLW<79>;iUlb3
 !s100 n8K6^bJ_djEPRc^nWKRf`3
 R7
 32
-R85
+R89
 !i10b 1
-R86
-Z120 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd|
-Z121 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd|
+R90
+Z124 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd|
+Z125 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/mux2.vhd|
 !i113 1
 R21
 R13
@@ -884,33 +884,33 @@ V[EZ0Fz6M[?LzRIRbUKTIZ3
 !s100 75=>gH<h9D5AUIJNzVnl:2
 R7
 32
-R85
+R89
 !i10b 1
-R86
-R120
-R121
+R90
+R124
+R125
 !i113 1
 R21
 R13
 Emux2x1
-Z122 w1653424368
+Z126 w1653424368
 R2
 R3
 !i122 516
 R4
-Z123 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd
-Z124 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd
+Z127 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd
+Z128 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd
 l0
 L4 1
 VK7gc1Z7[k?E:LQf65M[ck1
 !s100 egR?7QK=iGS>M1:GNNXHh1
 R7
 32
-R85
+R89
 !i10b 1
-R86
-Z125 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd|
-Z126 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd|
+R90
+Z129 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd|
+Z130 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/MUX2x1.vhd|
 !i113 1
 R21
 R13
@@ -925,11 +925,11 @@ V;E6R43FLhf_UHOadfS9E@3
 !s100 Vl?<Sjo?62Jo<l0XiQ2:o3
 R7
 32
-R85
+R89
 !i10b 1
-R86
-R125
-R126
+R90
+R129
+R130
 !i113 1
 R21
 R13
@@ -939,19 +939,19 @@ R2
 R3
 !i122 517
 R4
-Z127 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd
-Z128 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd
+Z131 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd
+Z132 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd
 l0
 L4 1
 VnfnT^a__QJmS3l5ZedANY2
 !s100 9g45767NAaQbF2Lb=71=^1
 R7
 32
-R85
+R89
 !i10b 1
-R86
-Z129 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd|
-Z130 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd|
+R90
+Z133 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd|
+Z134 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Mux8X1.vhd|
 !i113 1
 R21
 R13
@@ -966,33 +966,33 @@ VC_b]OM_=0E18Saa?0XZCQ2
 !s100 8^JX58S9Z41c>LUU7QAhT1
 R7
 32
-R85
+R89
 !i10b 1
-R86
-R129
-R130
+R90
+R133
+R134
 !i113 1
 R21
 R13
 Enbit_adder
-Z131 w1653341375
+Z135 w1653341375
 R2
 R3
 !i122 525
 R4
-Z132 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd
-Z133 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd
+Z136 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd
+Z137 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd
 l0
 L4 1
 VcKmo;lPT0_:jKVTEV_RJ<2
 !s100 G>GVFWb3S5G?hLE;PgIP13
 R7
 32
-R8
+R74
 !i10b 1
-R9
-Z134 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd|
-Z135 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd|
+R75
+Z138 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd|
+Z139 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_adder.vhd|
 !i113 1
 R12
 R13
@@ -1002,38 +1002,38 @@ R3
 DEx4 work 10 nbit_adder 0 22 cKmo;lPT0_:jKVTEV_RJ<2
 !i122 525
 l26
-Z136 L14 23
+Z140 L14 23
 Vj^0USJj?mG2B[DH=j7daa2
 !s100 [D`Pgfc5]<czM:QkRW`BK0
 R7
 32
-R8
+R74
 !i10b 1
-R9
-R134
-R135
+R75
+R138
+R139
 !i113 1
 R12
 R13
 Enbit_subtractor
-Z137 w1653341362
+Z141 w1653341362
 R2
 R3
 !i122 526
 R4
-Z138 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd
-Z139 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd
+Z142 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd
+Z143 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd
 l0
 L4 1
 VGooG9_L<OhonBIL3H@XXI1
 !s100 n`GTFlg[M3zLag[ihld2l3
 R7
 32
-R8
+R74
 !i10b 1
-R9
-Z140 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd|
-Z141 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd|
+R75
+Z144 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd|
+Z145 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Nbit_subtractor.vhd|
 !i113 1
 R12
 R13
@@ -1043,38 +1043,38 @@ R3
 DEx4 work 15 nbit_subtractor 0 22 GooG9_L<OhonBIL3H@XXI1
 !i122 526
 l26
-R136
+R140
 V>PWbYY?]XFB=E?UClZIQT3
 !s100 kh8?g2Oz?2<TiLOl`l1<O0
 R7
 32
-R8
+R74
 !i10b 1
-R9
-R140
-R141
+R75
+R144
+R145
 !i113 1
 R12
 R13
 Eonebit_adder
-Z142 w1653341367
+Z146 w1653341367
 R2
 R3
 !i122 527
 R4
-Z143 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd
-Z144 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd
+Z147 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd
+Z148 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd
 l0
 L4 1
 VZ1?>CA]JN?HFRnjLKTlfV0
 !s100 RYgke[V4`4Z`WH@2C>Mkj3
 R7
 32
-Z145 !s110 1653590189
+Z149 !s110 1653590189
 !i10b 1
-Z146 !s108 1653590189.000000
-Z147 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd|
-Z148 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd|
+Z150 !s108 1653590189.000000
+Z151 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd|
+Z152 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_adder.vhd|
 !i113 1
 R12
 R13
@@ -1084,38 +1084,38 @@ R3
 DEx4 work 12 onebit_adder 0 22 Z1?>CA]JN?HFRnjLKTlfV0
 !i122 527
 l15
-Z149 L14 7
+Z153 L14 7
 Vlf;jcU1=;1X=WT^KV2HF02
 !s100 VHK0XiX^7hH^hW3kU<j<D2
 R7
 32
-R145
+R149
 !i10b 1
-R146
-R147
-R148
+R150
+R151
+R152
 !i113 1
 R12
 R13
 Eonebit_subtractor
-Z150 w1653341371
+Z154 w1653341371
 R2
 R3
 !i122 528
 R4
-Z151 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd
-Z152 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd
+Z155 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd
+Z156 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd
 l0
 L4 1
 VTEbHAk@EFl2Ohm6AzL5dE3
 !s100 Wc;e80LSPJ8>nI0iBhRXm3
 R7
 32
-R145
+R149
 !i10b 1
-R146
-Z153 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd|
-Z154 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd|
+R150
+Z157 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd|
+Z158 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Onebit_subtractor.vhd|
 !i113 1
 R12
 R13
@@ -1125,16 +1125,16 @@ R3
 DEx4 work 17 onebit_subtractor 0 22 TEbHAk@EFl2Ohm6AzL5dE3
 !i122 528
 l15
-R149
+R153
 VaM@M48eXKC8CZz;=6WENd3
 !s100 D^3Io7;AGBRJ75K0z1^_]1
 R7
 32
-R145
+R149
 !i10b 1
-R146
-R153
-R154
+R150
+R157
+R158
 !i113 1
 R12
 R13
@@ -1144,8 +1144,8 @@ R2
 R3
 !i122 518
 R4
-Z155 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd
-Z156 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd
+Z159 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd
+Z160 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd
 l0
 L5 1
 Vi^im3L6bhUo7NF5ez8b3[2
@@ -1154,9 +1154,9 @@ R7
 32
 R31
 !i10b 1
-R86
-Z157 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd|
-Z158 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd|
+R90
+Z161 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd|
+Z162 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Output_port.vhd|
 !i113 1
 R21
 R13
@@ -1173,21 +1173,21 @@ R7
 32
 R31
 !i10b 1
-R86
-R157
-R158
+R90
+R161
+R162
 !i113 1
 R21
 R13
 Epc
-Z159 w1653284463
+Z163 w1653284463
 R1
 R2
 R3
 !i122 503
 R4
-Z160 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd
-Z161 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd
+Z164 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd
+Z165 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd
 l0
 L5 1
 VOBZmzFGGAOYiKBLTMCNMP1
@@ -1197,8 +1197,8 @@ R7
 R17
 !i10b 1
 R18
-Z162 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd|
-Z163 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd|
+Z166 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd|
+Z167 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/PC.vhd|
 !i113 1
 R21
 R13
@@ -1217,31 +1217,31 @@ R7
 R17
 !i10b 1
 R18
-R162
-R163
+R166
+R167
 !i113 1
 R21
 R13
 Eprocessor
-Z164 w1653592807
+Z168 w1653641644
 R1
 R2
 R3
-!i122 533
+!i122 540
 R4
-Z165 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Processor.vhd
-Z166 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Processor.vhd
+Z169 8C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\Processor.vhd
+Z170 FC:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\Processor.vhd
 l0
 L5 1
 Vn>Q0gl6Zh<VB@<hSUSlzR1
 !s100 H3@[J7eSnIlRG@n<[XiJK0
 R7
 32
-Z167 !s110 1653592878
+Z171 !s110 1653641653
 !i10b 1
-Z168 !s108 1653592878.000000
-Z169 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Processor.vhd|
-Z170 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/Processor.vhd|
+Z172 !s108 1653641653.000000
+Z173 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\Processor.vhd|
+Z174 !s107 C:\Users\ahmed\Desktop\University Courses Material\Arch\CA_project\Processor.vhd|
 !i113 1
 R12
 R13
@@ -1249,19 +1249,19 @@ Aarch_processor
 R1
 R2
 R3
-Z171 DEx4 work 9 processor 0 22 n>Q0gl6Zh<VB@<hSUSlzR1
-!i122 533
+Z175 DEx4 work 9 processor 0 22 n>Q0gl6Zh<VB@<hSUSlzR1
+!i122 540
 l574
-Z172 L16 842
-VFQ:WRmS1gmk?QoeH2JTid3
-!s100 3[:;c^8FWU]?KbM<URODF2
+L16 843
+Vk@QKjChCi[WR;S1cR=Q6?3
+!s100 DX?:Hhl0m9Z6Wfl_7GZYT3
 R7
 32
-R167
+R171
 !i10b 1
-R168
-R169
-R170
+R172
+R173
+R174
 !i113 1
 R12
 R13
@@ -1271,8 +1271,8 @@ R2
 R3
 !i122 519
 R4
-Z173 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd
-Z174 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd
+Z176 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd
+Z177 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd
 l0
 L4 1
 VRlUK9@>[ai8Hl4K5VJ]UB2
@@ -1282,8 +1282,8 @@ R7
 R31
 !i10b 1
 R32
-Z175 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd|
-Z176 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd|
+Z178 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd|
+Z179 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/RegisterFile.vhd|
 !i113 1
 R21
 R13
@@ -1301,20 +1301,20 @@ R7
 R31
 !i10b 1
 R32
-R175
-R176
+R178
+R179
 !i113 1
 R21
 R13
 Estack_pointer
-Z177 w1653284468
+Z180 w1653284468
 R1
 R2
 R3
 !i122 504
 R4
-Z178 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd
-Z179 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd
+Z181 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd
+Z182 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd
 l0
 L6 1
 V:AzDWGCF7S;N><0zg9TR50
@@ -1324,8 +1324,8 @@ R7
 R17
 !i10b 1
 R18
-Z180 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd|
-Z181 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd|
+Z183 !s90 -reportprogress|300|-work|Term_project|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd|
+Z184 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/stack_pointer.vhd|
 !i113 1
 R21
 R13
@@ -1344,31 +1344,31 @@ R7
 R17
 !i10b 1
 R18
-R180
-R181
+R183
+R184
 !i113 1
 R21
 R13
 Ewb_stage
-Z182 w1653592864
+Z185 w1653592864
 R1
 R2
 R3
 !i122 532
 R4
-Z183 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd
-Z184 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd
+Z186 8C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd
+Z187 FC:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd
 l0
 L5 1
 VDB7PPiIzad7lK=f85aT@H3
 !s100 ^liEBWN[MjN]WeK]7J7^F3
 R7
 32
-Z185 !s110 1653592870
+Z188 !s110 1653592870
 !i10b 1
-Z186 !s108 1653592870.000000
-Z187 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd|
-Z188 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd|
+Z189 !s108 1653592870.000000
+Z190 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd|
+Z191 !s107 C:/Users/ahmed/Desktop/University Courses Material/Arch/CA_project/WB_STAGE.vhd|
 !i113 1
 R12
 R13
@@ -1384,11 +1384,11 @@ VF`i4Q]6RT2@oj;[DSZV2=3
 !s100 gnmJYzK_MdCM6465N[?X_3
 R7
 32
-R185
-!i10b 1
-R186
-R187
 R188
+!i10b 1
+R189
+R190
+R191
 !i113 1
 R12
 R13

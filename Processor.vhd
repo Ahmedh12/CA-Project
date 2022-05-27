@@ -289,8 +289,8 @@ ARCHITECTURE arch_Processor OF Processor IS
                         OUTPUT_RETURN : OUT STD_LOGIC;
                         OUTPUT_CALL : OUT STD_LOGIC;
                         is_Jump : OUT STD_LOGIC;
-                        flags_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0)
-
+                        flags_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+                        OUT_PORT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
                 );
         END COMPONENT;
 
@@ -643,7 +643,7 @@ BEGIN
                 ------reg file-----
                 write_addr_reg_file => R_DST_3_BITS_BUFF4_OUT, --write back address --to be added from memory stage 
                 data_in_reg_file =>WB_VALUE_OUT, --write back value --to be added from memory stage 
-                mem_wb_reg_write => MEM_TO_REG_BUFF4_OUT, --enable --to be added from memory stage 
+                mem_wb_reg_write => WB_SIGNAL_BUFF4_OUT, --enable --to be added from memory stage 
                 -------------------
                 offset_immediate => FD_OFFSET,
                 rdst_address => FD_Rdst_address,
@@ -716,7 +716,7 @@ BEGIN
                 CLK,
                 RESET,
                 data_out_stack_decode_signal,
-                buffer_int_out_decode_signal,
+                buffer_int_out_decode_signal,--8alta 
                 STACK_DATA_IN_SIGNAL,
                 data_out_mem_read_decode_signal(0),
                 data_out_mem_write_decode_signal(0),
@@ -729,7 +729,7 @@ BEGIN
                 INVALID_ADD_BIT_SIGNAL, ---check
                 data_out_pc_to_stack_decode_signal(0),
                 data_out_rti_decode_signal(0),
-                INPUT_WB, ---check
+                data_out_reg_write_decode_signal(0), 
                 data_out_ldm_decode_signal(0),
                 data_out_port_read_decode_signal(0),
                 data_out_mem_to_reg_decode_signal(0),
@@ -760,7 +760,8 @@ BEGIN
                 OUTPUT_RETURN,
                 OUTPUT_CALL,
                 is_Jump_out,
-                EXE_FLAG_OUT
+                EXE_FLAG_OUT,
+                out_port
                 -----------------
         );
 
@@ -850,8 +851,8 @@ BEGIN
                 PC => PC_BUFF4_OUT,
 
                 ERROR_PC => WB_ERROR_PC_OUT,
-                WRITE_BACK_VAL_OUT => WB_VALUE_OUT,
-                R_DST_OUT => WB_RDEST_OUT
+                WRITE_BACK_VAL_OUT => WB_VALUE_OUT, -- not used
+                R_DST_OUT => WB_RDEST_OUT --not used
         );
 
 END arch_Processor;
