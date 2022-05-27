@@ -8,7 +8,7 @@ ENTITY FetchControl IS PORT (
 	reset : IN STD_LOGIC; --HW reset Signal
 	buff1_reset : IN STD_LOGIC; --Reset Signal for Buffer 1
 	disable : IN STD_LOGIC; --disable Signal
-	buff1_structural_hazard : IN STD_LOGIC; --Structural Hazard Signal from memory
+	structural_hazard : IN STD_LOGIC; --Structural Hazard Signal from memory after 1 cycle
 	sp_Exception : IN STD_LOGIC; --Exception EmptyStack
 	addr_Exception : IN STD_LOGIC; --Exception invalid address
 	buff4_sp_Exception : IN STD_LOGIC; --Exception EmptyStack in Buffer 4
@@ -58,7 +58,9 @@ BEGIN
 		ELSE
 		PC WHEN (family = "10" AND func = "000") --hlt instruction
 		ELSE
-		PC WHEN buff1_structural_hazard = '1'
+		PC WHEN structural_hazard = '1'
+		ELSE
+		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)) - 1, 32)) when disable = '1'
 		ELSE
 		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)) + 1, 32));
 END a_FetchControl;

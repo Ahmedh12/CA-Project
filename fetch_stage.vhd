@@ -42,7 +42,7 @@ ARCHITECTURE rtl OF FetchStage IS
         reset : IN STD_LOGIC; --HW reset Signal
         buff1_reset : IN STD_LOGIC; --Reset Signal for Buffer 1
         disable : IN STD_LOGIC; --disable Signal
-        buff1_structural_hazard : IN STD_LOGIC; --Structural Hazard Signal from memory
+        structural_hazard : IN STD_LOGIC; --Structural Hazard Signal from memory
         sp_Exception : IN STD_LOGIC; --Exception EmptyStack
         addr_Exception : IN STD_LOGIC; --Exception invalid address
         buff4_sp_Exception : IN STD_LOGIC; --Exception EmptyStack in Buffer 4
@@ -137,7 +137,7 @@ BEGIN
         reset => reset,
         buff1_reset => buff1_reset,
         disable => disable,
-        buff1_structural_hazard => buff1_structural_hazard,
+        structural_hazard => structural_hazard,
         sp_Exception => sp_exception,
         addr_Exception => addr_exception,
         buff4_sp_Exception => buff4_sp_exception,

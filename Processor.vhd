@@ -534,7 +534,6 @@ ARCHITECTURE arch_Processor OF Processor IS
         -----------------Signals From Memory Stage----------------------
         SIGNAL PUSH_POP_MEM_OUT : STD_LOGIC_VECTOR (1 DOWNTO 0);
         SIGNAL FLAGS_MEM_OUT : STD_LOGIC_VECTOR (2 DOWNTO 0);
-        SIGNAL SP_MEM_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         SIGNAL ADDRESS_MEM_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         SIGNAL DATA_MEM_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         SIGNAL PC_MEM_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -697,8 +696,8 @@ BEGIN
                 MEM_WB_BUFF_MEMORY_VAL => DATA_FROM_MEMORY_BUFF4_OUT,  -- --USED FROM MEM BUFF --------------------------
                 EX_MEM_BUFF_ALU => ALU_RESULT_OUT, --USED  --------------------------------------
                 MEM_WB_BUFF_ALU => ALU_RESULT_BUFF4_OUT, --USED FROM MEM BUFF
-                EX_MEM_BUFF_IMM => OFFSET_IMM_OUT, --USED -------------------------------------------------
-                MEM_WB_BUFF_IMM => IMM_OR_OFFSET_BUFF4_OUT , --USED FROM MEM BUFF
+                EX_MEM_BUFF_IMM => ALU_RESULT_OUT,--OFFSET_IMM_OUT, --USED -------------------------------------------------
+                MEM_WB_BUFF_IMM => ALU_RESULT_BUFF4_OUT,--IMM_OR_OFFSET_BUFF4_OUT , --USED FROM MEM BUFF
                 EX_MEM_PORT_IN => OUTOUT_PORT_IN,  --USED
                 MEM_WB_PORT_IN => INPORT_READ_BUFF4_OUT ,  --USED
                 RSCR2_DATA => buf_rsrc2_signal, --USED FROM DECODE 
@@ -743,7 +742,7 @@ BEGIN
                 ----------------------------------------------------------------- outputs --------------------------------------------------
                 OUTPUT_STACK => OUTPUT_STACK, --STACK OUT  --USED BY MEMORY
                 OUTPUT_INTERRUPT => OUTPUT_INTERRUPT, --OUT INT -----------------------------------------------NOT USED 
-                STACK_DATA_OUT => STACK_DATA_OUT, --USED BY MEMORY
+                STACK_DATA_OUT => open, --USED BY MEMORY
                 OUTPUT_MEM_READ => OUTPUT_MEM_READ, --USED BY MEMORY
                 OUTPUT_MEM_WRITE => OUTPUT_MEM_WRITE, --USED BY MEMORY
                 PC_DATA_32BIT_OUT => PC_DATA_32BIT_OUT, --USED BY MEMORY
@@ -790,7 +789,7 @@ BEGIN
 
                 data_from_memory => MEMORY_DATA_OUT,
                 alu_result => ALU_RESULT_OUT,
-                sp => STACK_DATA_OUT,
+                sp => (others => '0'),
                 pc => PC_DATA_32BIT_OUT,
                 r_src_2_32_bits => OUTPUT_RSRC2,
                 imm_or_offset_IN => OFFSET_IMM_OUT,
@@ -801,7 +800,7 @@ BEGIN
 
                 push_pop_out => PUSH_POP_MEM_OUT,
                 flags_out => FLAGS_MEM_OUT,
-                sp_out => SP_MEM_OUT,
+                sp_out => STACK_DATA_OUT,
                 address => ADDRESS_MEM_OUT,
                 data => DATA_MEM_OUT,
                 pc_out => PC_MEM_OUT,

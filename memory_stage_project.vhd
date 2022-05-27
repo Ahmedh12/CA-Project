@@ -69,7 +69,7 @@ ENTITY memory_stage_project IS
 		mem_to_pc_out_buff4 : OUT STD_LOGIC;
 		inPort_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-		mem_read_out_buff4: OUT STD_LOGIC
+		mem_read_out_buff4 : OUT STD_LOGIC
 	);
 END ENTITY memory_stage_project;
 
@@ -146,12 +146,21 @@ ARCHITECTURE arch_memory_stage_project OF memory_stage_project IS
 
 	END COMPONENT memory_buffer;
 
+	Component Stack_pointer_register IS
+		PORT (
+			EN, CLK, RESET : IN STD_LOGIC;
+			DATA_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			DATA_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
+	END Component ;
+
 	SIGNAL push_or_pop : STD_LOGIC;
 	SIGNAL current_address : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL address_is_invalid_to_buff4 : STD_LOGIC;
-	SIGNAL sp_error_to_buff4 : STD_LOGIC;
+	SIGNAL sp_error_to_buff4_sig : STD_LOGIC;
+	SIGNAL sp_update_data_out : std_logic_vector(31 DOWNTO 0);
+	SIGNAL sp_out_sig : std_logic_vector(31 DOWNTO 0) := "00000000000011111111111111111111"; --intial SP address
 BEGIN
-	sp_error_out <= sp_error_to_buff4;
+	sp_error_out <= sp_error_to_buff4_sig;
 	address_is_invalid_out <= address_is_invalid_to_buff4;
 	mem_write_out <= mem_write;
 	mem_read_out <= mem_read;
@@ -166,14 +175,14 @@ BEGIN
 	push_or_pop <= push_pop(0) OR push_pop(1);
 	address <= current_address;
 
-	u_mux2x1_1 : MUX2x1 GENERIC MAP(32) PORT MAP(alu_result, sp, push_or_pop, address);
+	u_mux2x1_1 : MUX2x1 GENERIC MAP(32) PORT MAP(alu_result, sp_out_sig, push_or_pop, address);
 	u_mux2x1_2 : MUX2x1 GENERIC MAP(32) PORT MAP(r_src_2_32_bits, pc, pc_signal, data);
 	u_validating_mem : memory_validating_address PORT MAP(mem_write, mem_read, push_pop, current_address, address_is_invalid_to_buff4);
-	u_new_sp : stack_pointer PORT MAP(clk, rst, call, ret, rti, push_pop, sp, sp_error_to_buff4, sp_out);
+	u_new_sp : stack_pointer PORT MAP(clk, rst, call, ret, rti, push_pop, sp_out_sig, sp_error_to_buff4_sig, sp_update_data_out);
 	u_memory_buffer : memory_buffer PORT MAP(
 		clk => clk,
 		rst => rst,
-		sp_error => sp_error_to_buff4,
+		sp_error => sp_error_to_buff4_sig,
 		address_invalid => address_is_invalid_to_buff4,
 		wb_signal_in => wb_signal_in,
 		load_imm_in => load_imm_in,
@@ -208,7 +217,16 @@ BEGIN
 		inPort_value_read_out => inPort_read_out_buff4,
 		mem_read_in => mem_read,
 		mem_read_out => mem_read_out_buff4
-		
+
 	);
+	u_stack_pointer_register : Stack_pointer_register PORT MAP(
+		'1',
+		clk,
+		rst,
+		sp_update_data_out,
+		sp_out_sig
+	);
+
+	sp_out <= sp_out_sig;
 
 END arch_memory_stage_project;

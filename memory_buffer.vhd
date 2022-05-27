@@ -70,8 +70,8 @@ BEGIN
 			r_dst_OUT <= (OTHERS => '0');
 
 		ELSIF rising_edge(clk) THEN
+			sp_error_out <= sp_error;
 			IF sp_error = '1' OR address_invalid = '1' THEN
-				sp_error_out <= sp_error;
 				address_invalid_out <= address_invalid;
 				wb_signal_out <= '0';
 				load_imm_out <= '0';
@@ -80,7 +80,6 @@ BEGIN
 				mem_to_pc_out <= '0';
 				inPort_value_read_out <= (OTHERS => '0');
 			ELSE
-				sp_error_out <= sp_error;
 				address_invalid_out <= address_invalid;
 				wb_signal_out <= wb_signal_in;
 				load_imm_out <= load_imm_in;
@@ -88,7 +87,6 @@ BEGIN
 				mem_to_reg_out <= mem_to_reg_in;
 				mem_to_pc_out <= mem_to_pc_in;
 				mem_read_out <= mem_read_in;
-
 				data_from_memory_OUT <= data_from_memory_in;
 				alu_result_OUT <= alu_result_in;
 				PC_vector_OUT <= PC_vector_in;

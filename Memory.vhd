@@ -5,7 +5,6 @@ USE IEEE.numeric_std.ALL;
 ENTITY Memory IS
 	PORT (
 		clk : IN STD_LOGIC; -- clock
-
 		--Memory Stage Needed Variables
 		memWrite : IN STD_LOGIC; --Write Signal from memory stage
 		memRead : IN STD_LOGIC; --Read Signal from memory stage
