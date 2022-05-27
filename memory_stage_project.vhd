@@ -68,7 +68,8 @@ ENTITY memory_stage_project IS
 		mem_to_reg_out_buff4 : OUT STD_LOGIC;
 		mem_to_pc_out_buff4 : OUT STD_LOGIC;
 		inPort_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+		mem_read_out_buff4: OUT STD_LOGIC
 	);
 END ENTITY memory_stage_project;
 
@@ -138,7 +139,9 @@ ARCHITECTURE arch_memory_stage_project OF memory_stage_project IS
 		mem_to_reg_out : OUT STD_LOGIC;
 		mem_to_pc_out : OUT STD_LOGIC;
 		inPort_value_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		inPort_value_read_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		inPort_value_read_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+		mem_read_in : IN STD_LOGIC;
+		mem_read_out : OUT STD_LOGIC
 		);
 
 	END COMPONENT memory_buffer;
@@ -202,7 +205,10 @@ BEGIN
 		mem_to_reg_out => mem_to_reg_out_buff4,
 		mem_to_pc_out => mem_to_pc_out_buff4,
 		inPort_value_read_in => inPort_read_in,
-		inPort_value_read_out => inPort_read_out_buff4
+		inPort_value_read_out => inPort_read_out_buff4,
+		mem_read_in => mem_read,
+		mem_read_out => mem_read_out_buff4
+		
 	);
 
 END arch_memory_stage_project;

@@ -357,7 +357,8 @@ ARCHITECTURE arch_Processor OF Processor IS
                         mem_to_reg_out_buff4 : OUT STD_LOGIC;
                         mem_to_pc_out_buff4 : OUT STD_LOGIC;
                         inPort_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-                        inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+                        inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        mem_read_out_buff4: OUT STD_LOGIC
                 );
 
         END COMPONENT memory_stage_project;
@@ -566,6 +567,7 @@ ARCHITECTURE arch_Processor OF Processor IS
         SIGNAL PORT_READ_BUFF4_OUT : STD_LOGIC;
         SIGNAL MEM_TO_REG_BUFF4_OUT : STD_LOGIC;
         SIGNAL MEM_TO_PC_BUFF4_OUT : STD_LOGIC;
+        SIGNAL MEM_READ_SIGNAL_BUFF4_OUT : STD_LOGIC;
         SIGNAL INPORT_READ_BUFF4_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         -----------------------WB Signals-----------------------
         SIGNAL WB_ERROR_PC_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
@@ -706,7 +708,7 @@ BEGIN
                 M_WB_BUFFER_WB => WB_SIGNAL_BUFF4_OUT,  --USED
                 E_MEM_BUFFER_PortRead => OUTPUT_PORT_READ,  --USED
                 M_WB_BUFFER_PortRead => PORT_READ_BUFF4_OUT,  --USED
-                M_WB_BUFFER_MemRead => M_WB_BUFFER_MemRead, --NOT USED -------------------------------------NOT DONE------------MISSING
+                M_WB_BUFFER_MemRead => MEM_READ_SIGNAL_BUFF4_OUT, --NOT USED -------------------------------------NOT DONE------------MISSING
                 E_M_BUFFER_LDM => OUTPUT_LOAD_IMM, --USED
                 M_WB_BUFFER_LDM => LOAD_IMM_BUFF4_OUT , --USED 
                 D_E_BUFFER_SRC1 => buf_rsrc1_address_out_signal, --USED FROM DECODE
@@ -831,7 +833,8 @@ BEGIN
                 mem_to_reg_out_buff4 => MEM_TO_REG_BUFF4_OUT,
                 mem_to_pc_out_buff4 => MEM_TO_PC_BUFF4_OUT,
                 inPort_read_in => OUTOUT_PORT_IN,
-                inPort_read_out_buff4 => INPORT_READ_BUFF4_OUT
+                inPort_read_out_buff4 => INPORT_READ_BUFF4_OUT,
+                mem_read_out_buff4 => MEM_READ_SIGNAL_BUFF4_OUT
         );
 
         ------------------------------------Write Back Stage-------------------------------------------

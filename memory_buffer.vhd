@@ -39,7 +39,9 @@ ENTITY memory_buffer IS PORT (
 	mem_to_reg_out : OUT STD_LOGIC;
 	mem_to_pc_out : OUT STD_LOGIC;
 	inPort_value_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-	inPort_value_read_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	inPort_value_read_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+	mem_read_in : IN STD_LOGIC;
+	mem_read_out : OUT STD_LOGIC
 );
 
 END memory_buffer;
@@ -56,6 +58,7 @@ BEGIN
 			port_read_out <= '0';
 			mem_to_reg_out <= '0';
 			mem_to_pc_out <= '0';
+			mem_read_out <= '0';
 
 			inPort_value_read_out <= (OTHERS => '0');
 			data_from_memory_OUT <= (OTHERS => '0');
@@ -84,6 +87,7 @@ BEGIN
 				port_read_out <= port_read_in;
 				mem_to_reg_out <= mem_to_reg_in;
 				mem_to_pc_out <= mem_to_pc_in;
+				mem_read_out <= mem_read_in;
 
 				data_from_memory_OUT <= data_from_memory_in;
 				alu_result_OUT <= alu_result_in;
