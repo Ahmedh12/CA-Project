@@ -571,6 +571,8 @@ ARCHITECTURE arch_Processor OF Processor IS
         SIGNAL WB_ERROR_PC_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         SIGNAL WB_VALUE_OUT : STD_LOGIC_VECTOR (31 DOWNTO 0);
         SIGNAL WB_RDEST_OUT : STD_LOGIC_VECTOR (2 DOWNTO 0);
+
+        SIGNAL DUMMY_SIGNAL2 : STD_LOGIC_VECTOR (31 DOWNTO 0);
 BEGIN
         Memory_component : Memory PORT MAP(
                 clk => clk,
@@ -643,7 +645,7 @@ BEGIN
                 ------reg file-----
                 write_addr_reg_file => R_DST_3_BITS_BUFF4_OUT, --write back address --to be added from memory stage 
                 data_in_reg_file =>WB_VALUE_OUT, --write back value --to be added from memory stage 
-                mem_wb_reg_write => WB_SIGNAL_BUFF4_OUT, --enable --to be added from memory stage 
+                mem_wb_reg_write => WB_SIGNAL_BUFF4_OUT, --enable --to be added from memory stage  ------------------------------------------HUSSEIN
                 -------------------
                 offset_immediate => FD_OFFSET,
                 rdst_address => FD_Rdst_address,
@@ -665,7 +667,7 @@ BEGIN
                 buf_rdst_address_out => buf_rdst_address_out_signal,
                 buf_offset_immediate_out => buf_offset_immediate_out_signal,
                 data_out_alu_src_decode => data_out_alu_src_decode_signal,
-                data_out_alu_op_decode => data_out_alu_op_decode_signal,
+                data_out_alu_op_decode => data_out_alu_op_decode_signal,  --check not taken
                 data_out_mem_write_decode => data_out_mem_write_decode_signal,
                 data_out_mem_read_decode => data_out_mem_read_decode_signal,
                 data_out_mem_to_reg_decode => data_out_mem_to_reg_decode_signal,
@@ -676,92 +678,93 @@ BEGIN
                 data_out_ldm_decode => data_out_ldm_decode_signal,
                 data_out_pc_to_stack_decode => data_out_pc_to_stack_decode_signal,
                 data_out_mem_to_pc_decode => data_out_mem_to_pc_decode_signal,
-                data_out_in_port_decode => EX_MEM_PORT_IN,
+                data_out_in_port_decode => DUMMY_SIGNAL2,
                 data_out_rti_decode => data_out_rti_decode_signal,
                 data_out_ret_decode => data_out_ret_decode_signal,
                 data_out_call_decode => data_out_call_decode_signal,
-                freeze_pc_out_decode => freeze_pc_out_decode_signal,
-                flush_out_decode => flush_out_decode_signal,
-                buffer_disable_out_decode => buffer_disable_out_decode_signal
+                freeze_pc_out_decode => freeze_pc_out_decode_signal,  --not taken
+                flush_out_decode => flush_out_decode_signal,  --not taken
+                buffer_disable_out_decode => buffer_disable_out_decode_signal  --not taken
         );
 
         ----------------------------------EXECUTION-----------------------------------------------
         OP_CODE_DATA <= buf_family_code_out_signal & buf_func_code_out_signal;
 
         EXECUTE_STAGE : EX_STAGE PORT MAP(
-                buf_rsrc1_signal,
-                MEM_WB_BUFF_MEMORY_VAL,
-                EX_MEM_BUFF_ALU,
-                MEM_WB_BUFF_ALU,
-                EX_MEM_BUFF_IMM,
-                MEM_WB_BUFF_IMM,
-                EX_MEM_PORT_IN,
-                MEM_WB_PORT_IN,
-                buf_rsrc2_signal,
-                buf_offset_immediate_out_signal,
-                data_out_alu_src_decode_signal(0),
-                E_M_BUFFER_WB,
-                M_WB_BUFFER_WB,
-                E_MEM_BUFFER_PortRead,
-                M_WB_BUFFER_PortRead,
-                M_WB_BUFFER_MemRead,
-                E_M_BUFFER_LDM,
-                M_WB_BUFFER_LDM,
-                buf_rsrc1_address_out_signal,
-                buf_rsrc2_address_out_signal,
-                E_MEM_BUFFER_DEST,
-                M_WB_BUFFER_DEST,
-                OP_CODE_DATA,
-                data_out_port_write_decode_signal(0),
-                CLK,
-                RESET,
-                data_out_stack_decode_signal,
-                buffer_int_out_decode_signal,--8alta 
-                STACK_DATA_IN_SIGNAL,
-                data_out_mem_read_decode_signal(0),
-                data_out_mem_write_decode_signal(0),
-                buf_pc_out_signal,
-                buf_rsrc1_address_out_signal,
-                buf_rsrc2_address_out_signal,
-                buf_rdst_address_out_signal,
-                INPUT_MEM_PC_SIGNAL, ---check
-                EXEP_STACK_POINTER_SIGNAL, ---check
-                INVALID_ADD_BIT_SIGNAL, ---check
-                data_out_pc_to_stack_decode_signal(0),
-                data_out_rti_decode_signal(0),
-                data_out_reg_write_decode_signal(0), 
-                data_out_ldm_decode_signal(0),
-                data_out_port_read_decode_signal(0),
-                data_out_mem_to_reg_decode_signal(0),
-                data_out_ret_decode_signal(0),
-                data_out_call_decode_signal(0),
-                buffer_in_port_decode_signal,
-                OUTPUT_STACK, --STACK OUT
-                OUTPUT_INTERRUPT, --OUT INT
-                STACK_DATA_OUT,
-                OUTPUT_MEM_READ,
-                OUTPUT_MEM_WRITE,
-                PC_DATA_32BIT_OUT,
-                ALU_RESULT_OUT,
-                OFFSET_IMM_OUT,
-                ADDRESS_RSRC1_OUT,
-                ADDRESS_RSRC2_OUT,
-                ADDRESS_RDST_OUT,
-                OUTPUT_RSRC2,
-                OUTOUT_PORT_IN,
-                OUTPUT_MEM_PC,
-                EXEP_STACK_POINTER_OUT,
-                OUTPUT_PC_TO_STACK,
-                OUTPUT_RTI,
-                OUTPUT_WB,
-                OUTPUT_LOAD_IMM,
-                OUTPUT_PORT_READ,
-                OUTPUT_MEM_TO_REG,
-                OUTPUT_RETURN,
-                OUTPUT_CALL,
-                is_Jump_out,
-                EXE_FLAG_OUT,
-                out_port
+                RSCR1_DATA => buf_rsrc1_signal,  --USED FORM DECODE
+                MEM_WB_BUFF_MEMORY_VAL => DATA_FROM_MEMORY_BUFF4_OUT,  -- --USED FROM MEM BUFF --------------------------
+                EX_MEM_BUFF_ALU => ALU_RESULT_OUT, --USED  --------------------------------------
+                MEM_WB_BUFF_ALU => ALU_RESULT_BUFF4_OUT, --USED FROM MEM BUFF
+                EX_MEM_BUFF_IMM => OFFSET_IMM_OUT, --USED -------------------------------------------------
+                MEM_WB_BUFF_IMM => IMM_OR_OFFSET_BUFF4_OUT , --USED FROM MEM BUFF
+                EX_MEM_PORT_IN => OUTOUT_PORT_IN,  --USED
+                MEM_WB_PORT_IN => INPORT_READ_BUFF4_OUT ,  --USED
+                RSCR2_DATA => buf_rsrc2_signal, --USED FROM DECODE 
+                OFFEST_IMM => buf_offset_immediate_out_signal,  --USED FROM DECODE
+                ALU_SRC => data_out_alu_src_decode_signal(0), --USED FROM DECODE
+                E_M_BUFFER_WB => OUTPUT_WB,  --USED
+                M_WB_BUFFER_WB => WB_SIGNAL_BUFF4_OUT,  --USED
+                E_MEM_BUFFER_PortRead => OUTPUT_PORT_READ,  --USED
+                M_WB_BUFFER_PortRead => PORT_READ_BUFF4_OUT,  --USED
+                M_WB_BUFFER_MemRead => M_WB_BUFFER_MemRead, --NOT USED -------------------------------------NOT DONE------------MISSING
+                E_M_BUFFER_LDM => OUTPUT_LOAD_IMM, --USED
+                M_WB_BUFFER_LDM => LOAD_IMM_BUFF4_OUT , --USED 
+                D_E_BUFFER_SRC1 => buf_rsrc1_address_out_signal, --USED FROM DECODE
+                D_E_BUFFER_SRC2 => buf_rsrc2_address_out_signal, --USED FROM DECODE
+                E_MEM_BUFFER_DEST => ADDRESS_RDST_OUT, --USED
+                M_WB_BUFFER_DEST => R_DST_3_BITS_BUFF4_OUT , --USED
+                OP_CODE => OP_CODE_DATA,  --USED FROM DECODE CONCATINATED
+                PORT_WRITE_SIG => data_out_port_write_decode_signal(0),  --USED FROM DECODE
+                CLK => CLK, --GENERAL
+                RESET => RESET, --GENERAL
+                INPUT_STACK => data_out_stack_decode_signal, --USED FROM DECODE
+                INPUT_INTERRUPT => buffer_int_out_decode_signal, --USED FROM DECODE ---8ALTA
+                STACK_DATA_IN => STACK_DATA_IN_SIGNAL,  ------------------------------------------NOT USED
+                INPUT_MEM_READ => data_out_mem_read_decode_signal(0),  --USED FROM DECODE
+                INPUT_MEM_WRITE => data_out_mem_write_decode_signal(0),  --USED FROM DECODE
+                PC_DATA_32BIT_IN => buf_pc_out_signal, --USED FROM DECODE
+                ADDRESS_RSRC1_IN => buf_rsrc1_address_out_signal,  --check, --USED FROM DECODE
+                ADDRESS_RSRC2_IN => buf_rsrc2_address_out_signal,  --check, --USED FROM DECODE
+                ADDRESS_RDST_IN => buf_rdst_address_out_signal, --USED FROM DECODE 
+                INPUT_MEM_PC => data_out_mem_to_pc_decode_signal(0), ---check,USED
+                EXEP_STACK_POINTER => EXEP_STACK_POINTER_SIGNAL, ---check, --NOT USED
+                INVALID_ADD_BIT => INVALID_ADD_BIT_SIGNAL, ---check, ----------------------------------------NOT USED
+                INPUT_PC_TO_STACK => data_out_pc_to_stack_decode_signal(0), --USED FROM DECODE
+                INPUT_RTI => data_out_rti_decode_signal(0), --USED FROM DECODE
+                INPUT_WB => data_out_reg_write_decode_signal(0), --USED(Updated)
+                INPUT_LOAD_IMM => data_out_ldm_decode_signal(0), --USED FROM DECODE
+                INPUT_PORT_READ => data_out_port_read_decode_signal(0), --USED FROM DECODE
+                INPUT_MEM_TO_REG => data_out_mem_to_reg_decode_signal(0), --USED FROM DECODE
+                INPUT_RETURN => data_out_ret_decode_signal(0), --USED FROM DECODE
+                INPUT_CALL => data_out_call_decode_signal(0), --USED FROM DECODE
+                INPUT_PORT_IN => buffer_in_port_decode_signal, --USED FROM DECODE 
+                ----------------------------------------------------------------- outputs --------------------------------------------------
+                OUTPUT_STACK => OUTPUT_STACK, --STACK OUT  --USED BY MEMORY
+                OUTPUT_INTERRUPT => OUTPUT_INTERRUPT, --OUT INT -----------------------------------------------NOT USED 
+                STACK_DATA_OUT => STACK_DATA_OUT, --USED BY MEMORY
+                OUTPUT_MEM_READ => OUTPUT_MEM_READ, --USED BY MEMORY
+                OUTPUT_MEM_WRITE => OUTPUT_MEM_WRITE, --USED BY MEMORY
+                PC_DATA_32BIT_OUT => PC_DATA_32BIT_OUT, --USED BY MEMORY
+                ALU_RESULT_OUT => ALU_RESULT_OUT,  --USED BY MEMORY
+                OFFSET_IMM_OUT => OFFSET_IMM_OUT,  --USED BY MEMORY  AND FETCH
+                ADDRESS_RSRC1_OUT => ADDRESS_RSRC1_OUT, --USED BY MEMORY
+                ADDRESS_RSRC2_OUT => ADDRESS_RSRC2_OUT, --USED BY MEMORY
+                ADDRESS_RDST_OUT => ADDRESS_RDST_OUT, --USED BY MEMORY
+                OUTPUT_RSRC2 => OUTPUT_RSRC2,  --USED BY MEMORY
+                OUTOUT_PORT_IN => OUTOUT_PORT_IN, --USED BY MEMORY
+                OUTPUT_MEM_PC => OUTPUT_MEM_PC, --USED BY MEMORY
+                EXEP_STACK_POINTER_OUT => EXEP_STACK_POINTER_OUT, --NOT USED
+                OUTPUT_PC_TO_STACK => OUTPUT_PC_TO_STACK, --USED BY MEMORY
+                OUTPUT_RTI => OUTPUT_RTI, --USED BY MEMORY
+                OUTPUT_WB => OUTPUT_WB, --USED BY MEMORY
+                OUTPUT_LOAD_IMM => OUTPUT_LOAD_IMM, --USED BY MEMORY
+                OUTPUT_PORT_READ => OUTPUT_PORT_READ, --USED BY MEMORY
+                OUTPUT_MEM_TO_REG => OUTPUT_MEM_TO_REG, --USED BY MEMORY
+                OUTPUT_RETURN => OUTPUT_RETURN, --USED BY MEMORY
+                OUTPUT_CALL => OUTPUT_CALL, --USED BY MEMORY
+                is_Jump => is_Jump_out, --USED BY FETCH AND DECODE
+                flags_out => EXE_FLAG_OUT, --USED BY MEMORY
+                OUT_PORT_OUT => out_port  --------------------------------------------------------HUSSEIN
                 -----------------
         );
 
