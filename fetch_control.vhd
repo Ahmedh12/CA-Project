@@ -62,18 +62,12 @@ BEGIN
 		ELSE
 		PC WHEN (family = "10" AND func = "000") --hlt instruction
 		ELSE
-		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC))-1, 32)) WHEN structural_hazard = '1' AND buff1_structural_hazard = '0' AND buff2_structural_hazard = '0' AND CHECK = '0' --
+		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)), 32)) WHEN structural_hazard = '1' AND buff1_structural_hazard = '0' AND buff2_structural_hazard = '0'
 		ELSE
-		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC))-1, 32)) WHEN structural_hazard = '1' AND buff1_structural_hazard = '1' AND buff2_structural_hazard = '1' AND CHECK = '0'--
-		ELSE
-		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC))- 1, 32)) when disable = '1'
+		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)), 32)) WHEN structural_hazard = '1' AND buff1_structural_hazard = '1' AND buff2_structural_hazard = '1'
 		ELSE 
-		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)), 32)) WHEN structural_hazard = '1' AND buff1_structural_hazard = '1' AND buff2_structural_hazard = '0' AND CHECK = '0'
+		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC))-2, 32)) WHEN structural_hazard = '1' AND buff1_structural_hazard = '1' AND buff2_structural_hazard = '0'
 		ELSE
 		STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)) + 1, 32));
-
-CHECK <= '1' WHEN structural_hazard = '1' AND buff1_structural_hazard = '0' AND buff2_structural_hazard = '0' --
-else '0';
-
 
 END a_FetchControl;

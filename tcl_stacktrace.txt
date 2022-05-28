@@ -1,0 +1,31 @@
+Sat May 28 14:36:40 CAT 2022
+Trace back: invalid command name ""
+    while executing
+"$this component $tree"
+    (method "::vsimwidgets::VTree::activate" body line 6)
+    invoked from within
+"activate"
+    (method "::WaveTree::Activate" body line 12)
+    invoked from within
+".main_pane.wave.interior.cs.body.pw.wf.tree Activate .main_pane.wave"
+    (in namespace inscope "::Wave" script line 1)
+    invoked from within
+"namespace inscope ::Wave {.main_pane.wave.interior.cs.body.pw.wf.tree Activate} .main_pane.wave"
+    ("eval" body line 1)
+    invoked from within
+"eval $itk_option(-activatecommand) $frame_name"
+    (object "::.main_pane.wave" method "::mtiwidgets::WindowObj::Activate" body line 16)
+    invoked from within
+"$active_window Activate"
+    (object "::.vcop" method "::vsimwidgets::Vcop::Action" body line 118)
+    invoked from within
+"Action SetMenuState $button_list"
+    (object "::.vcop" method "::vsimwidgets::Vcop::InternalUpdateToolbars" body line 53)
+    invoked from within
+"InternalUpdateToolbars"
+    (object "::.vcop" method "::vsimwidgets::Vcop::FocusIn" body line 25)
+    invoked from within
+".vcop FocusIn .main_pane.wave"
+    (command bound to event)
+  <2:C:/intelFPGA_lite/20.1/modelsim_ase/win32aloem/tk8.6/bgerror.tcl:106: ::tkerror {invalid command name ""}
+  <1:eval:1: ::tk::dialog::error::bgerror {invalid command name ""}

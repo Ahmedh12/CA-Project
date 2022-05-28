@@ -170,6 +170,7 @@ BEGIN
         SW_interrupt = "10" OR
         HW_interrupt = '1' OR
         structural_hazard = '1' OR
+        buff1_structural_hazard = '1' OR
         sp_exception = '1' OR
         addr_exception = '1' OR
 	buff1_reset = '1' OR
