@@ -1,0 +1,13 @@
+# ignore output of assembler
+*.mem
+
+# ignore bak files
+*.bak
+
+# ignore compiler files 
+Term_project/
+
+# ignore project setup file
+*.mpf
+
+*.mti

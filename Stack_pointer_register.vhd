@@ -1,0 +1,22 @@
+LIBRARY IEEE;
+USE IEEE.std_logic_1164.ALL;
+
+ENTITY Stack_pointer_register IS
+	PORT (
+		EN, CLK, RESET : IN STD_LOGIC;
+		DATA_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+		DATA_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0));
+END ENTITY Stack_pointer_register;
+ARCHITECTURE ARCH_Stack_pointer_register OF Stack_pointer_register IS
+BEGIN
+	PROCESS (CLK,RESET)
+ 	BEGIN
+	--IF falling_edge(CLK) THEN
+		IF RESET = '1' THEN
+			DATA_OUT <= "00000000000011111111111111111111";
+		ELSE
+			DATA_OUT <= DATA_IN;
+		END IF;
+	--END IF;
+	END PROCESS;
+END ARCH_Stack_pointer_register;
