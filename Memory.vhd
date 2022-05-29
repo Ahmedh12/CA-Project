@@ -43,7 +43,7 @@ BEGIN
 					IF call = '1' THEN --Call a subroutine
 						ram(to_integer(unsigned(Stack_pointer))) <= datain;
 					ELSE --Interrupt 
-						pc_with_flags := PC;
+						pc_with_flags := STD_LOGIC_VECTOR(to_unsigned(to_integer(unsigned(PC)) + 1, 32)); --we add one to the Propagated PC to push the address of the next instruction
 						pc_with_flags(31 DOWNTO 29) := flags; -- Preserve the flags with the PC --- 19 downto 0 are the PC bits and 31 downto 29 are the flags
 						ram(to_integer(unsigned(Stack_pointer))) <= pc_with_flags;
 					END IF;
@@ -56,7 +56,7 @@ BEGIN
 		ELSIF memRead = '1' THEN --Read from memory (pop or load or ret or rti)
 			structural_hazard <= '1'; --Freeze the PC to stall the fetch stage
 			IF ret = '1' OR rti = '1' OR stack = "10" THEN --Pop the PC from the stack (ret or rti)
-				dataout <= ram(to_integer(unsigned(Stack_pointer))); 
+				dataout <= ram(to_integer(unsigned(Stack_pointer)) - 1);
 			ELSE --Load a value from the Memory (load)
 				dataout <= ram(to_integer(unsigned(data_address)));
 			END IF;

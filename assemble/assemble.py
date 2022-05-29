@@ -45,8 +45,8 @@ registerAddress = {
     'R6': '110',
     'R7': '111'
 }
-rootDir = 'C:\\Users\\ahmed\\Desktop\\assemble\\'
-fileName = 'TwoOperand'
+rootDir = 'C:\\Users\\ahmed\\Desktop\\University Courses Material\\Arch\\CA_project\\assemble\\'
+fileName = 'Branch'
 # instructions in the end
 instructions = []
 instructionsOrder = []

@@ -26,8 +26,8 @@ ENTITY decode_stage IS
         address_out_of_bound_in : IN STD_LOGIC;
         empty_stack_in : IN STD_LOGIC;
 
-	STRUC_HAZARD_IN : IN STD_LOGIC_VECTOR(0 DOWNTO 0); -------------------ADDED
-	
+        STRUC_HAZARD_IN : IN STD_LOGIC_VECTOR(0 DOWNTO 0); -------------------ADDED
+
         ------------------------------
         buf_family_code_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
         buf_function_code_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -65,7 +65,7 @@ ENTITY decode_stage IS
         freeze_pc_out_decode : OUT STD_LOGIC;
         flush_out_decode : OUT STD_LOGIC;
         buffer_disable_out_decode : OUT STD_LOGIC;
-	STRUC_HAZARD_OUT: OUT STD_LOGIC_VECTOR(0 DOWNTO 0) -------------------ADDED
+        STRUC_HAZARD_OUT : OUT STD_LOGIC_VECTOR(0 DOWNTO 0) -------------------ADDED
     );
 END decode_stage;
 
@@ -106,52 +106,52 @@ ARCHITECTURE a_decode_stage OF decode_stage IS
     COMPONENT id_ex_buffer IS
         PORT (
 
-        clock: in std_logic;
-        rst: in std_logic;
-	buffer_enable: in std_logic;
-        fired_signals: in std_logic_vector(17 downto 0);
-	data_in_Rsrc1: in std_logic_vector(31 downto 0);
-        data_in_Rsrc2: in std_logic_vector(31 downto 0);
-        data_in_pc: in std_logic_vector(31 downto 0);
-        data_in_rsrc1_address: in std_logic_vector(2 downto 0);
-	data_in_rsrc2_address: in std_logic_vector(2 downto 0);
-        data_in_rdst_address: in std_logic_vector(2 downto 0);
-	data_in_offset_immediate: in std_logic_vector(31 downto 0);
-	data_in_family_code: in std_logic_vector(1 downto 0);
-        data_in_function_code: in std_logic_vector(2 downto 0);
-	address_out_of_bound: in std_logic;
-	empty_stack: in std_logic;
-	jump: in std_logic; 
-	BUFF2_STRUC_HAZARD_IN: IN std_logic_vector(0 downto 0); ---------------ADDED
-        in_port_id_ex_buffer_in: in std_logic_vector(31 downto 0);
-	int_id_ex_buffer_in:in std_logic_vector(1 downto 0);
-        data_out_alu_src: out std_logic_vector(0 downto 0);
-        data_out_alu_op: out std_logic_vector(2 downto 0);
-        data_out_mem_write: out std_logic_vector(0 downto 0);
-        data_out_mem_read: out std_logic_vector(0 downto 0);
-        data_out_mem_to_reg: out std_logic_vector(0 downto 0);
-        data_out_reg_write: out std_logic_vector(0 downto 0);
-        data_out_stack: out std_logic_vector(1 downto 0);
-        data_out_port_read: out std_logic_vector(0 downto 0);
-        data_out_port_write: out std_logic_vector(0 downto 0);
-        data_out_ldm: out std_logic_vector(0 downto 0);
-        data_out_pc_to_stack: out std_logic_vector(0 downto 0);
-        data_out_mem_to_pc: out std_logic_vector(0 downto 0);
-        data_out_rti: out std_logic_vector(0 downto 0);
-        data_out_ret: out std_logic_vector(0 downto 0);
-        data_out_call: out std_logic_vector(0 downto 0);
-	data_out_Rsrc1: out std_logic_vector(31 downto 0);
-        data_out_Rsrc2: out std_logic_vector(31 downto 0);
-	data_out_pc: out std_logic_vector(31 downto 0);
-        data_out_rsrc1_address: out std_logic_vector(2 downto 0);
-	data_out_rsrc2_address: out std_logic_vector(2 downto 0);
-        data_out_rdst_address: out std_logic_vector(2 downto 0);
-	data_out_offset_immediate: out std_logic_vector(31 downto 0);
-	data_out_family_code: out std_logic_vector(1 downto 0);
-	data_out_function_code: out std_logic_vector(2 downto 0);
-	in_port_id_ex_buffer_out: out std_logic_vector(31 downto 0);
-	int_id_ex_buffer_out:out std_logic_vector(1 downto 0);
-	BUFF2_STRUC_HAZARD_OUT: OUT std_logic_vector(0 downto 0) ---------------ADDED
+            clock : IN STD_LOGIC;
+            rst : IN STD_LOGIC;
+            buffer_enable : IN STD_LOGIC;
+            fired_signals : IN STD_LOGIC_VECTOR(17 DOWNTO 0);
+            data_in_Rsrc1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_in_Rsrc2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_in_pc : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_in_rsrc1_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_in_rsrc2_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_in_rdst_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_in_offset_immediate : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_in_family_code : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+            data_in_function_code : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+            address_out_of_bound : IN STD_LOGIC;
+            empty_stack : IN STD_LOGIC;
+            jump : IN STD_LOGIC;
+            BUFF2_STRUC_HAZARD_IN : IN STD_LOGIC_VECTOR(0 DOWNTO 0); ---------------ADDED
+            in_port_id_ex_buffer_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+            int_id_ex_buffer_in : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+            data_out_alu_src : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_alu_op : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_out_mem_write : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_mem_read : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_mem_to_reg : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_reg_write : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_stack : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+            data_out_port_read : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_port_write : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_ldm : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_pc_to_stack : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_mem_to_pc : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_rti : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_ret : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_call : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+            data_out_Rsrc1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_out_Rsrc2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_out_pc : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_out_rsrc1_address : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_out_rsrc2_address : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_out_rdst_address : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+            data_out_offset_immediate : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            data_out_family_code : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+            data_out_function_code : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+            in_port_id_ex_buffer_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+            int_id_ex_buffer_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+            BUFF2_STRUC_HAZARD_OUT : OUT STD_LOGIC_VECTOR(0 DOWNTO 0) ---------------ADDED
         );
     END COMPONENT id_ex_buffer;
     COMPONENT MUX2x1 IS
@@ -187,7 +187,7 @@ ARCHITECTURE a_decode_stage OF decode_stage IS
     SIGNAL id_ex_rdst_signal : STD_LOGIC_VECTOR(2 DOWNTO 0);
     SIGNAL id_ex_mem_read_logic : STD_LOGIC;
 
-	SIGNAL STRUC_INTERM: STD_LOGIC;
+    SIGNAL STRUC_INTERM : STD_LOGIC;
 BEGIN
     --id_ex_mem_read_logic<=id_ex_mem_read_signal(0 downto 0);
     data_out_mem_read_decode(0 DOWNTO 0) <= id_ex_mem_read_signal;
@@ -224,8 +224,6 @@ BEGIN
         data_out_1 => rsrc1_buffer_in,
         data_out_2 => rsrc2_buffer_in
     );
-
-
     id_ex_component : id_ex_buffer PORT MAP(
         clock => clock,
         rst => reset,
@@ -243,7 +241,7 @@ BEGIN
         address_out_of_bound => address_out_of_bound_in,
         empty_stack => empty_stack_in,
         jump => jump_in,
-	BUFF2_STRUC_HAZARD_IN => STRUC_HAZARD_IN,
+        BUFF2_STRUC_HAZARD_IN => STRUC_HAZARD_IN,
         in_port_id_ex_buffer_in => in_port_decode,
         int_id_ex_buffer_in => int_decode,
         data_out_alu_src => data_out_alu_src_decode,
@@ -273,7 +271,7 @@ BEGIN
         data_out_function_code => buf_function_code_out,
         in_port_id_ex_buffer_out => buf_in_port_out,
         int_id_ex_buffer_out => data_out_int_decode,
-	BUFF2_STRUC_HAZARD_OUT => STRUC_HAZARD_OUT
+        BUFF2_STRUC_HAZARD_OUT => STRUC_HAZARD_OUT
     );
     mux_component : MUX2x1 GENERIC MAP(
         18) PORT MAP(

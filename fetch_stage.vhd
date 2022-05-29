@@ -10,12 +10,12 @@ ENTITY FetchStage IS PORT (
     buff4_addr_exception : IN STD_LOGIC;
 
     is_jump : IN STD_LOGIC;
-    buff2_structural_hazard: IN STD_LOGIC;  --DECODE 
+    buff2_structural_hazard : IN STD_LOGIC; --DECODE 
     jump_address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 
     mem_to_pc : IN STD_LOGIC; --in case of POP
     mem_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --instruction fetched from memory
-    structural_hazard : IN STD_LOGIC;  -- 
+    structural_hazard : IN STD_LOGIC; -- 
     disable : IN STD_LOGIC;
 
     sp_exception : IN STD_LOGIC;
@@ -31,8 +31,8 @@ ENTITY FetchStage IS PORT (
     instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
     SW_interrupt_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-    buff1_structural_hazard_OUT: OUT STD_LOGIC
-    );
+    buff1_structural_hazard_OUT : OUT STD_LOGIC
+);
 
 END FetchStage;
 
@@ -46,8 +46,8 @@ ARCHITECTURE rtl OF FetchStage IS
         buff1_reset : IN STD_LOGIC; --Reset Signal for Buffer 1
         disable : IN STD_LOGIC; --disable Signal
         structural_hazard : IN STD_LOGIC; --Structural Hazard Signal from memory
-	buff1_structural_hazard: IN STD_LOGIC;
-	buff2_structural_hazard: IN STD_LOGIC;
+        buff1_structural_hazard : IN STD_LOGIC;
+        buff2_structural_hazard : IN STD_LOGIC;
         sp_Exception : IN STD_LOGIC; --Exception EmptyStack
         addr_Exception : IN STD_LOGIC; --Exception invalid address
         buff4_sp_Exception : IN STD_LOGIC; --Exception EmptyStack in Buffer 4
@@ -64,23 +64,23 @@ ARCHITECTURE rtl OF FetchStage IS
         FC_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)); --The output instruction address that will be feed into the memory 
     END COMPONENT;
     COMPONENT FD_Buffer IS PORT (
-	clk : IN STD_LOGIC;
-	enable : IN STD_LOGIC;
-	flush : IN STD_LOGIC;
-	Instruction_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-	PC_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-	inPortVal_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-	reset_in : IN STD_LOGIC;
-	SW_int_in : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-	HW_int_in : IN STD_LOGIC;
-	structural_hazard_in : IN STD_LOGIC;
-	Instruction_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	PC_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	inPortVal_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-	reset_out : OUT STD_LOGIC;
-	SW_int_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-	HW_int_out : OUT STD_LOGIC;
-	structural_hazard_out : OUT STD_LOGIC);
+        clk : IN STD_LOGIC;
+        enable : IN STD_LOGIC;
+        flush : IN STD_LOGIC;
+        Instruction_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        PC_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        inPortVal_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+        reset_in : IN STD_LOGIC;
+        SW_int_in : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+        HW_int_in : IN STD_LOGIC;
+        structural_hazard_in : IN STD_LOGIC;
+        Instruction_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        PC_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        inPortVal_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+        reset_out : OUT STD_LOGIC;
+        SW_int_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+        HW_int_out : OUT STD_LOGIC;
+        structural_hazard_out : OUT STD_LOGIC);
     END COMPONENT;
     COMPONENT PC IS
         PORT (
@@ -104,13 +104,13 @@ ARCHITECTURE rtl OF FetchStage IS
     SIGNAL state : STD_LOGIC_VECTOR(2 DOWNTO 0) := "000";
     --------------------------------------------------------------------------END SIGNALS DECLERATION----------------------------------------------------------------------------
 BEGIN
+    SW_interrupt <= "01" WHEN (mem_out(13 DOWNTO 9) = "11011" AND mem_out(2 DOWNTO 0) = "000") -- int 0 instruction
+        ELSE
+        "10" WHEN (mem_out(13 DOWNTO 9) = "11011" AND mem_out(2 DOWNTO 0) = "001") --int 1 instruction
+        ELSE
+        "00"; --NO interrupt
 
-
-    SW_interrupt  <= "01" WHEN (mem_out(13 DOWNTO 9) = "11011" AND mem_out(2 DOWNTO 0) = "000") -- int 0 instruction
-    ELSE "10" WHEN (mem_out(13 DOWNTO 9) = "11011" AND mem_out(2 DOWNTO 0) = "010")             --int 1 instruction
-    ELSE "00"; --NO interrupt
-
-    SW_interrupt_out <= SW_interrupt;
+    SW_interrupt_out <= buff1_SW_interrupt;
 
     program_counter : PC PORT MAP(
         address_in => FC_out,
@@ -134,9 +134,9 @@ BEGIN
         reset_out => buff1_reset,
         SW_int_out => buff1_SW_interrupt,
         HW_int_out => buff1_HW_interrupt,
-        structural_hazard_out => buff1_structural_hazard	
-	);
-	buff1_structural_hazard_OUT <= buff1_structural_hazard;
+        structural_hazard_out => buff1_structural_hazard
+    );
+    buff1_structural_hazard_OUT <= buff1_structural_hazard;
 
     fetch_Control : FetchControl PORT MAP(
         family => mem_out(10 DOWNTO 9),
@@ -145,8 +145,8 @@ BEGIN
         buff1_reset => buff1_reset,
         disable => disable,
         structural_hazard => structural_hazard,
-	buff1_structural_hazard => buff1_structural_hazard,
-	buff2_structural_hazard => buff2_structural_hazard,
+        buff1_structural_hazard => buff1_structural_hazard,
+        buff2_structural_hazard => buff2_structural_hazard,
         sp_Exception => sp_exception,
         addr_Exception => addr_exception,
         buff4_sp_Exception => buff4_sp_exception,
@@ -162,22 +162,21 @@ BEGIN
         PC => PC_reg_out,
         FC_out => FC_out);
 
-        fetch_adderss <= PC_reg_out;
+    fetch_adderss <= PC_reg_out;
 
     MuxWithNOPInstruction <= "00000000000000000000110000000000" WHEN (
         reset = '1' OR
-        SW_interrupt = "01" OR
-        SW_interrupt = "10" OR
-        HW_interrupt = '1' OR
+        buff1_SW_interrupt = "01" OR
+        buff1_SW_interrupt = "10" OR
+        buff1_HW_interrupt = '1' OR
         structural_hazard = '1' OR
         buff1_structural_hazard = '1' OR
         sp_exception = '1' OR
         addr_exception = '1' OR
-	buff1_reset = '1' OR
-        state /= "000") ELSE
+        buff1_reset = '1' OR
+        state /= "000"
+        ) ELSE
         mem_out;
-    
-        
     PROCESS (clk)
     BEGIN
         IF rising_edge(clk) THEN

@@ -51,12 +51,12 @@ BEGIN
 		buff4_addr_Exception = '1' OR 
 		buff1_HW_interrupt = '1' OR 
 		mem_to_pc = '1' OR
-		reset = '1' OR
-		HW_interrupt = '1' OR
-		SW_interrupt = "01" OR
-		SW_interrupt = "10" OR
-		sp_Exception = '1' OR
-		addr_Exception = '1'
+		reset = '1'
+		-- HW_interrupt = '1' OR
+		-- SW_interrupt = "01" OR
+		-- SW_interrupt = "10" OR
+		-- sp_Exception = '1' OR
+		-- addr_Exception = '1'
 		ELSE
 		jump_address WHEN is_jump = '1'
 		ELSE

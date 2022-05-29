@@ -43,103 +43,103 @@ ARCHITECTURE arch_Processor OF Processor IS
         END COMPONENT;
         ------------------------- FETCH STAGE -------------------------
         COMPONENT FetchStage IS PORT (
-               clk : IN STD_LOGIC;
-    reset : IN STD_LOGIC;
+                clk : IN STD_LOGIC;
+                reset : IN STD_LOGIC;
 
-    buff4_sp_exception : IN STD_LOGIC;
-    buff4_addr_exception : IN STD_LOGIC;
+                buff4_sp_exception : IN STD_LOGIC;
+                buff4_addr_exception : IN STD_LOGIC;
 
-    is_jump : IN STD_LOGIC;
-    buff2_structural_hazard: IN STD_LOGIC;  --DECODE 
-    jump_address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                is_jump : IN STD_LOGIC;
+                buff2_structural_hazard : IN STD_LOGIC; --DECODE 
+                jump_address : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 
-    mem_to_pc : IN STD_LOGIC; --in case of POP
-    mem_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --instruction fetched from memory
-    structural_hazard : IN STD_LOGIC;  -- 
-    disable : IN STD_LOGIC;
+                mem_to_pc : IN STD_LOGIC; --in case of POP
+                mem_out : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --instruction fetched from memory
+                structural_hazard : IN STD_LOGIC; -- 
+                disable : IN STD_LOGIC;
 
-    sp_exception : IN STD_LOGIC;
-    addr_exception : IN STD_LOGIC;
+                sp_exception : IN STD_LOGIC;
+                addr_exception : IN STD_LOGIC;
 
-    HW_interrupt : IN STD_LOGIC;
+                HW_interrupt : IN STD_LOGIC;
 
-    inport_val_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                inport_val_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 
-    --outputs
-    fetch_adderss : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    PC_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-    SW_interrupt_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-    buff1_structural_hazard_OUT: OUT STD_LOGIC);
+                --outputs
+                fetch_adderss : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                PC_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                instruction : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                inport_val_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                SW_interrupt_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+                buff1_structural_hazard_OUT : OUT STD_LOGIC);
 
         END COMPONENT;
         ------------------------- DECODE STAGE -------------------------
         COMPONENT decode_stage IS
                 PORT (
-        int_decode : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-        in_port_decode : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        clock : IN STD_LOGIC;
-        reset : IN STD_LOGIC;
-        family_code_in : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
-        function_code_in : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ------Hazard----
-        --    id_ex_mem_read_in: in std_logic;
-        --	id_ex_rdst_in: in std_logic_vector(2 downto 0);
-        pc_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        rsrc1_address_in : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        rsrc2_address_in : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ------reg file-----
-        write_addr_reg_file : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        data_in_reg_file : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --write back value
-        mem_wb_reg_write : IN STD_LOGIC;--enable
-        -------------------
-        offset_immediate : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-        rdst_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        jump_in : IN STD_LOGIC;
-        address_out_of_bound_in : IN STD_LOGIC;
-        empty_stack_in : IN STD_LOGIC;
+                        int_decode : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+                        in_port_decode : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        clock : IN STD_LOGIC;
+                        reset : IN STD_LOGIC;
+                        family_code_in : IN STD_LOGIC_VECTOR(1 DOWNTO 0);
+                        function_code_in : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        ------Hazard----
+                        --    id_ex_mem_read_in: in std_logic;
+                        --	id_ex_rdst_in: in std_logic_vector(2 downto 0);
+                        pc_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        rsrc1_address_in : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        rsrc2_address_in : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        ------reg file-----
+                        write_addr_reg_file : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        data_in_reg_file : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --write back value
+                        mem_wb_reg_write : IN STD_LOGIC;--enable
+                        -------------------
+                        offset_immediate : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        rdst_address : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        jump_in : IN STD_LOGIC;
+                        address_out_of_bound_in : IN STD_LOGIC;
+                        empty_stack_in : IN STD_LOGIC;
 
-	STRUC_HAZARD_IN : IN STD_LOGIC_VECTOR(0 DOWNTO 0); -------------------ADDED
-	
-        ------------------------------
-        buf_family_code_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-        buf_function_code_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        buf_int_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-        buf_in_port_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        --buf_cu_mux_buffer: out STD_LOGIC_VECTOR(17 DOWNTO 0);
-        --buf_stall_hazard: out std_logic;
-        buf_pc_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        buf_rsrc1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        buf_rsrc2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        buf_rsrc1_address_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        buf_rsrc2_address_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        buf_rdst_address_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        buf_offset_immediate_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        data_out_alu_src_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_alu_op_decode : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        data_out_mem_write_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_mem_read_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_mem_to_reg_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_reg_write_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_stack_decode : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-        data_out_port_read_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_port_write_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_ldm_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_pc_to_stack_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_mem_to_pc_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_rti_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_ret_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_call_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
-        data_out_in_port_decode : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-        data_out_int_decode : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
-        --data_out_Rsrc1: out std_logic_vector(31 downto 0);
-        --  data_out_Rsrc2: out std_logic_vector(31 downto 0);
-        --data_out_pc: out std_logic_vector(31 downto 0)
-        freeze_pc_out_decode : OUT STD_LOGIC;
-        flush_out_decode : OUT STD_LOGIC;
-        buffer_disable_out_decode : OUT STD_LOGIC;
-	STRUC_HAZARD_OUT: OUT STD_LOGIC_VECTOR(0 DOWNTO 0) -------------------ADDED
+                        STRUC_HAZARD_IN : IN STD_LOGIC_VECTOR(0 DOWNTO 0); -------------------ADDED
+
+                        ------------------------------
+                        buf_family_code_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+                        buf_function_code_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        buf_int_out : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+                        buf_in_port_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        --buf_cu_mux_buffer: out STD_LOGIC_VECTOR(17 DOWNTO 0);
+                        --buf_stall_hazard: out std_logic;
+                        buf_pc_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        buf_rsrc1 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        buf_rsrc2 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        buf_rsrc1_address_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        buf_rsrc2_address_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        buf_rdst_address_out : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        buf_offset_immediate_out : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        data_out_alu_src_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_alu_op_decode : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+                        data_out_mem_write_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_mem_read_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_mem_to_reg_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_reg_write_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_stack_decode : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+                        data_out_port_read_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_port_write_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_ldm_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_pc_to_stack_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_mem_to_pc_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_rti_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_ret_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_call_decode : OUT STD_LOGIC_VECTOR(0 DOWNTO 0);
+                        data_out_in_port_decode : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+                        data_out_int_decode : OUT STD_LOGIC_VECTOR(1 DOWNTO 0);
+                        --data_out_Rsrc1: out std_logic_vector(31 downto 0);
+                        --  data_out_Rsrc2: out std_logic_vector(31 downto 0);
+                        --data_out_pc: out std_logic_vector(31 downto 0)
+                        freeze_pc_out_decode : OUT STD_LOGIC;
+                        flush_out_decode : OUT STD_LOGIC;
+                        buffer_disable_out_decode : OUT STD_LOGIC;
+                        STRUC_HAZARD_OUT : OUT STD_LOGIC_VECTOR(0 DOWNTO 0) -------------------ADDED
                 );
         END COMPONENT;
         ------------------------- EXECUTE STAGE -------------------------
@@ -298,7 +298,7 @@ ARCHITECTURE arch_Processor OF Processor IS
                         is_Jump : OUT STD_LOGIC;
                         flags_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
                         OUT_PORT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-			OUT_DATA_MUX_RSRC2: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+                        OUT_DATA_MUX_RSRC2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
                 );
         END COMPONENT;
 
@@ -366,7 +366,7 @@ ARCHITECTURE arch_Processor OF Processor IS
                         mem_to_pc_out_buff4 : OUT STD_LOGIC;
                         inPort_read_in : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
                         inPort_read_out_buff4 : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
-                        mem_read_out_buff4: OUT STD_LOGIC
+                        mem_read_out_buff4 : OUT STD_LOGIC
                 );
 
         END COMPONENT memory_stage_project;
@@ -413,7 +413,7 @@ ARCHITECTURE arch_Processor OF Processor IS
         SIGNAL FD_INPORT : STD_LOGIC_VECTOR(31 DOWNTO 0);
         SIGNAL FD_SW_intrrupt : STD_LOGIC_VECTOR(1 DOWNTO 0);
         SIGNAL FS_FETCH_ADDRESS : STD_LOGIC_VECTOR(31 DOWNTO 0);
-        Signal FD_SW_INT_OUT : STD_LOGIC_VECTOR(1 DOWNTO 0);
+        SIGNAL FD_SW_INT_OUT : STD_LOGIC_VECTOR(1 DOWNTO 0);
         -------------------------------------SIGNALS OUT OF DECODE STAGE-----------------------------
         SIGNAL buf_family_code_out_signal : STD_LOGIC_VECTOR(1 DOWNTO 0);
         SIGNAL buf_func_code_out_signal : STD_LOGIC_VECTOR(2 DOWNTO 0);
@@ -582,9 +582,9 @@ ARCHITECTURE arch_Processor OF Processor IS
         SIGNAL WB_RDEST_OUT : STD_LOGIC_VECTOR (2 DOWNTO 0);
 
         SIGNAL DUMMY_SIGNAL2 : STD_LOGIC_VECTOR (31 DOWNTO 0);
-	SIGNAL OUT_DATA_MUX_RSRC2_SIG : STD_LOGIC_VECTOR (31 DOWNTO 0);
-	SIGNAL buff1_structural_hazard_OUT_SIG : STD_LOGIC_VECTOR (0 DOWNTO 0);
-	SIGNAL buff2_structural_hazard_OUT_SIG	: STD_LOGIC_VECTOR (0 DOWNTO 0);
+        SIGNAL OUT_DATA_MUX_RSRC2_SIG : STD_LOGIC_VECTOR (31 DOWNTO 0);
+        SIGNAL buff1_structural_hazard_OUT_SIG : STD_LOGIC_VECTOR (0 DOWNTO 0);
+        SIGNAL buff2_structural_hazard_OUT_SIG : STD_LOGIC_VECTOR (0 DOWNTO 0);
 BEGIN
         Memory_component : Memory PORT MAP(
                 clk => clk,
@@ -613,7 +613,7 @@ BEGIN
 
                 is_jump => is_Jump_out, -- is_jump signal from execute stage
                 jump_address => OFFSET_IMM_OUT, --jump address from execute stage
-		buff2_structural_hazard => buff2_structural_hazard_OUT_SIG(0),
+                buff2_structural_hazard => buff2_structural_hazard_OUT_SIG(0),
                 mem_to_pc => MEM_TO_PC_BUFF4_OUT,
                 mem_out => MEMORY_DATA_OUT,
                 structural_hazard => Structural_hazard,
@@ -631,8 +631,8 @@ BEGIN
                 PC_OUT => FD_PC,
                 instruction => FD_INSTRUCTION,
                 inport_val_out => FD_INPORT,
-                SW_interrupt_out=>FD_SW_INT_OUT,
-		buff1_structural_hazard_OUT=>buff1_structural_hazard_OUT_SIG(0)
+                SW_interrupt_out => FD_SW_INT_OUT,
+                buff1_structural_hazard_OUT => buff1_structural_hazard_OUT_SIG(0)
         );
         --Mapping the inputs to the decode stage
         FD_family_Code <= FD_INSTRUCTION(10 DOWNTO 9);
@@ -643,7 +643,7 @@ BEGIN
         FD_OFFSET <= "0000000000000000" & FD_INSTRUCTION(31 DOWNTO 16);
 
         DecodingStage_Component : decode_stage PORT MAP(
-                int_decode => FD_SW_INT_OUT, ---to be added from fetch stage
+                int_decode => FD_SW_INT_OUT, --interrupt signal from fetch stage
                 in_port_decode => FD_INPORT,
                 clock => clk,
                 reset => reset,
@@ -657,21 +657,21 @@ BEGIN
                 rsrc2_address_in => FD_RS2_address,
                 ------reg file-----
                 write_addr_reg_file => R_DST_3_BITS_BUFF4_OUT, --write back address --to be added from memory stage 
-                data_in_reg_file =>WB_VALUE_OUT, --write back value --to be added from memory stage 
+                data_in_reg_file => WB_VALUE_OUT, --write back value --to be added from memory stage 
                 mem_wb_reg_write => WB_SIGNAL_BUFF4_OUT, --enable --to be added from memory stage  ------------------------------------------HUSSEIN
                 -------------------
                 offset_immediate => FD_OFFSET,
                 rdst_address => FD_Rdst_address,
                 jump_in => is_Jump_out, --to be added from execute stage
-                address_out_of_bound_in =>ADDRESS_IS_INVALID_BUFF4_OUT, --to be added from memory stage;
-                empty_stack_in =>SP_ERROR_BUFF4_OUT, --to be added from memory stage;
+                address_out_of_bound_in => ADDRESS_IS_INVALID_BUFF4_OUT, --to be added from memory stage;
+                empty_stack_in => SP_ERROR_BUFF4_OUT, --to be added from memory stage;
 
                 --outputs
-		STRUC_HAZARD_IN => buff1_structural_hazard_OUT_SIG,
-		STRUC_HAZARD_OUT =>  buff2_structural_hazard_OUT_SIG,
+                STRUC_HAZARD_IN => buff1_structural_hazard_OUT_SIG,
+                STRUC_HAZARD_OUT => buff2_structural_hazard_OUT_SIG,
                 buf_family_code_out => buf_family_code_out_signal,
                 buf_function_code_out => buf_func_code_out_signal,
-                buf_int_out => buffer_int_out_decode_signal,
+                buf_int_out => open,
                 buf_in_port_out => buffer_in_port_decode_signal,
                 buf_pc_out => buf_pc_out_signal,
                 buf_rsrc1 => buf_rsrc1_signal,
@@ -681,7 +681,7 @@ BEGIN
                 buf_rdst_address_out => buf_rdst_address_out_signal,
                 buf_offset_immediate_out => buf_offset_immediate_out_signal,
                 data_out_alu_src_decode => data_out_alu_src_decode_signal,
-                data_out_alu_op_decode => data_out_alu_op_decode_signal,  --check not taken
+                data_out_alu_op_decode => data_out_alu_op_decode_signal, --check not taken
                 data_out_mem_write_decode => data_out_mem_write_decode_signal,
                 data_out_mem_read_decode => data_out_mem_read_decode_signal,
                 data_out_mem_to_reg_decode => data_out_mem_to_reg_decode_signal,
@@ -694,51 +694,52 @@ BEGIN
                 data_out_mem_to_pc_decode => data_out_mem_to_pc_decode_signal,
                 data_out_in_port_decode => DUMMY_SIGNAL2,
                 data_out_rti_decode => data_out_rti_decode_signal,
+                data_out_int_decode => buffer_int_out_decode_signal,
                 data_out_ret_decode => data_out_ret_decode_signal,
                 data_out_call_decode => data_out_call_decode_signal,
-                freeze_pc_out_decode => freeze_pc_out_decode_signal,  --not taken
-                flush_out_decode => flush_out_decode_signal,  --not taken
-                buffer_disable_out_decode => buffer_disable_out_decode_signal  --not taken
+                freeze_pc_out_decode => freeze_pc_out_decode_signal, --not taken
+                flush_out_decode => flush_out_decode_signal, --not taken
+                buffer_disable_out_decode => buffer_disable_out_decode_signal --not taken
         );
 
         ----------------------------------EXECUTION-----------------------------------------------
         OP_CODE_DATA <= buf_family_code_out_signal & buf_func_code_out_signal;
 
         EXECUTE_STAGE : EX_STAGE PORT MAP(
-                RSCR1_DATA => buf_rsrc1_signal,  --USED FORM DECODE
-                MEM_WB_BUFF_MEMORY_VAL => DATA_FROM_MEMORY_BUFF4_OUT,  -- --USED FROM MEM BUFF --------------------------
+                RSCR1_DATA => buf_rsrc1_signal, --USED FORM DECODE
+                MEM_WB_BUFF_MEMORY_VAL => DATA_FROM_MEMORY_BUFF4_OUT, -- --USED FROM MEM BUFF --------------------------
                 EX_MEM_BUFF_ALU => ALU_RESULT_OUT, --USED  --------------------------------------
                 MEM_WB_BUFF_ALU => ALU_RESULT_BUFF4_OUT, --USED FROM MEM BUFF
                 EX_MEM_BUFF_IMM => OFFSET_IMM_OUT, --USED -------------------------------------------------
-                MEM_WB_BUFF_IMM => IMM_OR_OFFSET_BUFF4_OUT , --USED FROM MEM BUFF
-                EX_MEM_PORT_IN => OUTOUT_PORT_IN,  --USED
-                MEM_WB_PORT_IN => INPORT_READ_BUFF4_OUT ,  --USED
+                MEM_WB_BUFF_IMM => IMM_OR_OFFSET_BUFF4_OUT, --USED FROM MEM BUFF
+                EX_MEM_PORT_IN => OUTOUT_PORT_IN, --USED
+                MEM_WB_PORT_IN => INPORT_READ_BUFF4_OUT, --USED
                 RSCR2_DATA => buf_rsrc2_signal, --USED FROM DECODE 
-                OFFEST_IMM => buf_offset_immediate_out_signal,  --USED FROM DECODE
+                OFFEST_IMM => buf_offset_immediate_out_signal, --USED FROM DECODE
                 ALU_SRC => data_out_alu_src_decode_signal(0), --USED FROM DECODE
-                E_M_BUFFER_WB => OUTPUT_WB,  --USED
-                M_WB_BUFFER_WB => WB_SIGNAL_BUFF4_OUT,  --USED
-                E_MEM_BUFFER_PortRead => OUTPUT_PORT_READ,  --USED
-                M_WB_BUFFER_PortRead => PORT_READ_BUFF4_OUT,  --USED
+                E_M_BUFFER_WB => OUTPUT_WB, --USED
+                M_WB_BUFFER_WB => WB_SIGNAL_BUFF4_OUT, --USED
+                E_MEM_BUFFER_PortRead => OUTPUT_PORT_READ, --USED
+                M_WB_BUFFER_PortRead => PORT_READ_BUFF4_OUT, --USED
                 M_WB_BUFFER_MemRead => MEM_READ_SIGNAL_BUFF4_OUT, --NOT USED -------------------------------------NOT DONE------------MISSING
                 E_M_BUFFER_LDM => OUTPUT_LOAD_IMM, --USED
-                M_WB_BUFFER_LDM => LOAD_IMM_BUFF4_OUT , --USED 
+                M_WB_BUFFER_LDM => LOAD_IMM_BUFF4_OUT, --USED 
                 D_E_BUFFER_SRC1 => buf_rsrc1_address_out_signal, --USED FROM DECODE
                 D_E_BUFFER_SRC2 => buf_rsrc2_address_out_signal, --USED FROM DECODE
                 E_MEM_BUFFER_DEST => ADDRESS_RDST_OUT, --USED
-                M_WB_BUFFER_DEST => R_DST_3_BITS_BUFF4_OUT , --USED
-                OP_CODE => OP_CODE_DATA,  --USED FROM DECODE CONCATINATED
-                PORT_WRITE_SIG => data_out_port_write_decode_signal(0),  --USED FROM DECODE
+                M_WB_BUFFER_DEST => R_DST_3_BITS_BUFF4_OUT, --USED
+                OP_CODE => OP_CODE_DATA, --USED FROM DECODE CONCATINATED
+                PORT_WRITE_SIG => data_out_port_write_decode_signal(0), --USED FROM DECODE
                 CLK => CLK, --GENERAL
                 RESET => RESET, --GENERAL
                 INPUT_STACK => data_out_stack_decode_signal, --USED FROM DECODE
-                INPUT_INTERRUPT => buffer_int_out_decode_signal, --USED FROM DECODE ---8ALTA
-                STACK_DATA_IN => STACK_DATA_IN_SIGNAL,  ------------------------------------------NOT USED
-                INPUT_MEM_READ => data_out_mem_read_decode_signal(0),  --USED FROM DECODE
-                INPUT_MEM_WRITE => data_out_mem_write_decode_signal(0),  --USED FROM DECODE
+                INPUT_INTERRUPT => buffer_int_out_decode_signal, --USED FROM DECODE
+                STACK_DATA_IN => STACK_DATA_IN_SIGNAL, ------------------------------------------NOT USED
+                INPUT_MEM_READ => data_out_mem_read_decode_signal(0), --USED FROM DECODE
+                INPUT_MEM_WRITE => data_out_mem_write_decode_signal(0), --USED FROM DECODE
                 PC_DATA_32BIT_IN => buf_pc_out_signal, --USED FROM DECODE
-                ADDRESS_RSRC1_IN => buf_rsrc1_address_out_signal,  --check, --USED FROM DECODE
-                ADDRESS_RSRC2_IN => buf_rsrc2_address_out_signal,  --check, --USED FROM DECODE
+                ADDRESS_RSRC1_IN => buf_rsrc1_address_out_signal, --check, --USED FROM DECODE
+                ADDRESS_RSRC2_IN => buf_rsrc2_address_out_signal, --check, --USED FROM DECODE
                 ADDRESS_RDST_IN => buf_rdst_address_out_signal, --USED FROM DECODE 
                 INPUT_MEM_PC => data_out_mem_to_pc_decode_signal(0), ---check,USED
                 EXEP_STACK_POINTER => EXEP_STACK_POINTER_SIGNAL, ---check, --NOT USED
@@ -755,16 +756,16 @@ BEGIN
                 ----------------------------------------------------------------- outputs --------------------------------------------------
                 OUTPUT_STACK => OUTPUT_STACK, --STACK OUT  --USED BY MEMORY
                 OUTPUT_INTERRUPT => OUTPUT_INTERRUPT, --OUT INT -----------------------------------------------NOT USED 
-                STACK_DATA_OUT => open, --USED BY MEMORY
+                STACK_DATA_OUT => OPEN, --USED BY MEMORY
                 OUTPUT_MEM_READ => OUTPUT_MEM_READ, --USED BY MEMORY
                 OUTPUT_MEM_WRITE => OUTPUT_MEM_WRITE, --USED BY MEMORY
                 PC_DATA_32BIT_OUT => PC_DATA_32BIT_OUT, --USED BY MEMORY
-                ALU_RESULT_OUT => ALU_RESULT_OUT,  --USED BY MEMORY
-                OFFSET_IMM_OUT => OFFSET_IMM_OUT,  --USED BY MEMORY  AND FETCH
+                ALU_RESULT_OUT => ALU_RESULT_OUT, --USED BY MEMORY
+                OFFSET_IMM_OUT => OFFSET_IMM_OUT, --USED BY MEMORY  AND FETCH
                 ADDRESS_RSRC1_OUT => ADDRESS_RSRC1_OUT, --USED BY MEMORY
                 ADDRESS_RSRC2_OUT => ADDRESS_RSRC2_OUT, --USED BY MEMORY
                 ADDRESS_RDST_OUT => ADDRESS_RDST_OUT, --USED BY MEMORY
-                OUTPUT_RSRC2 => OUTPUT_RSRC2,  --USED BY MEMORY
+                OUTPUT_RSRC2 => OUTPUT_RSRC2, --USED BY MEMORY
                 OUTOUT_PORT_IN => OUTOUT_PORT_IN, --USED BY MEMORY
                 OUTPUT_MEM_PC => OUTPUT_MEM_PC, --USED BY MEMORY
                 EXEP_STACK_POINTER_OUT => EXEP_STACK_POINTER_OUT, --NOT USED
@@ -779,7 +780,7 @@ BEGIN
                 is_Jump => is_Jump_out, --USED BY FETCH AND DECODE
                 flags_out => EXE_FLAG_OUT, --USED BY MEMORY
                 OUT_PORT_OUT => out_port,
-		OUT_DATA_MUX_RSRC2 => OUT_DATA_MUX_RSRC2_SIG
+                OUT_DATA_MUX_RSRC2 => OUT_DATA_MUX_RSRC2_SIG
                 -----------------
         );
 
@@ -803,9 +804,9 @@ BEGIN
 
                 data_from_memory => MEMORY_DATA_OUT,
                 alu_result => ALU_RESULT_OUT,
-                sp => (others => '0'),
+                sp => (OTHERS => '0'),
                 pc => PC_DATA_32BIT_OUT,
-                r_src_2_32_bits => OUT_DATA_MUX_RSRC2_SIG,---OUTPUT_RSRC2,
+                r_src_2_32_bits => OUT_DATA_MUX_RSRC2_SIG, ---OUTPUT_RSRC2,
                 imm_or_offset_IN => OFFSET_IMM_OUT,
                 flags => EXE_FLAG_OUT(2 DOWNTO 0),
                 r_src_1_3_bits_IN => ADDRESS_RSRC1_OUT,
