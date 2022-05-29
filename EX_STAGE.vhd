@@ -10,6 +10,8 @@ ENTITY EX_STAGE IS
 		--E_M_BUFFER_WB		:IN std_logic;
 		--M_WB_BUFFER_WB  	:IN std_logic;
 
+		buffer_disable_in : IN STD_LOGIC;
+
 		--------------------------------------MUX COMPONENTS---------------------------------------
 		--BUFF4 MEM_WB_BUFF
 		--BUFF3 EX_MEM_BUFF
@@ -162,8 +164,8 @@ ENTITY EX_STAGE IS
 
 		--------------------------OUTPUT PORT--------------------------
 		OUT_PORT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-		
-		OUT_DATA_MUX_RSRC2: OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
+
+		OUT_DATA_MUX_RSRC2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0)
 
 	);
 END ENTITY EX_STAGE;
@@ -217,7 +219,8 @@ ARCHITECTURE ARCH_Execute_stage OF EX_STAGE IS
 	END COMPONENT;
 	-----JUMP DETECT UNIT
 	COMPONENT JMP_DETECT_UNIT IS
-		PORT (--disable:IN std_logic;
+		PORT (
+			disable : IN STD_LOGIC;
 			FLAGS_IN : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
 			OT_CODE : IN STD_LOGIC_VECTOR(1 DOWNTO 0); --(OPERATIONAL TYPE)
 			ID_CODE : IN STD_LOGIC_VECTOR(2 DOWNTO 0); --(Instruction identification)
@@ -258,117 +261,117 @@ ARCHITECTURE ARCH_Execute_stage OF EX_STAGE IS
 	COMPONENT EXECUTE_MEMORY_BUFFER IS
 		PORT (
 
-        ----------------------------------------- INPUTS -------------------------------
-        --------------------STACK/INTERRUPT
-        INPUT_STACK : IN STD_LOGIC_VECTOR(1 DOWNTO 0); --STACK IN
-        INPUT_INTERRUPT : IN STD_LOGIC_VECTOR(1 DOWNTO 0); --IN INT
-        STACK_DATA_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-        --------------------
+			----------------------------------------- INPUTS -------------------------------
+			--------------------STACK/INTERRUPT
+			INPUT_STACK : IN STD_LOGIC_VECTOR(1 DOWNTO 0); --STACK IN
+			INPUT_INTERRUPT : IN STD_LOGIC_VECTOR(1 DOWNTO 0); --IN INT
+			STACK_DATA_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			--------------------
 
-        ---------------------MEM READ/WRITE
-        INPUT_MEM_READ : IN STD_LOGIC;
-        INPUT_MEM_WRITE : IN STD_LOGIC;
-        --------------------
+			---------------------MEM READ/WRITE
+			INPUT_MEM_READ : IN STD_LOGIC;
+			INPUT_MEM_WRITE : IN STD_LOGIC;
+			--------------------
 
-        ------------------PROGRAM COUNTER
-        PC_DATA_32BIT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-        ------------------
+			------------------PROGRAM COUNTER
+			PC_DATA_32BIT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			------------------
 
-        --------------------ALU RESULT
-        ALU_RESULT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-        -------------------
+			--------------------ALU RESULT
+			ALU_RESULT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			-------------------
 
-        --------------------OFFSET/IMMEDIATE
-        OFFSET_IMM_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-        ---------------------
-        ---------------------ADDRESSES
-        --INPUT ADRRESSS
-        ADDRESS_RSRC1_IN : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ADDRESS_RSRC2_IN : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ADDRESS_RDST_IN : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ------------------
+			--------------------OFFSET/IMMEDIATE
+			OFFSET_IMM_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			---------------------
+			---------------------ADDRESSES
+			--INPUT ADRRESSS
+			ADDRESS_RSRC1_IN : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+			ADDRESS_RSRC2_IN : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+			ADDRESS_RDST_IN : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+			------------------
 
-        ----------------------RSRC2
-        INPUT_RSRC2 : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-        ----------------------
+			----------------------RSRC2
+			INPUT_RSRC2 : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			----------------------
 
-        -------------- INPUT SIGNALS
-        INPUT_MEM_PC : IN STD_LOGIC;
-        CLK : IN STD_LOGIC;
-        RESET : IN STD_LOGIC;
-        EXEP_STACK_POINTER : IN STD_LOGIC;
-        INVALID_ADD_BIT : IN STD_LOGIC;
-        INPUT_PC_TO_STACK : IN STD_LOGIC;
-        INPUT_RTI : IN STD_LOGIC;
-        INPUT_WB : IN STD_LOGIC;
-        INPUT_LOAD_IMM : IN STD_LOGIC;
-        INPUT_PORT_READ : IN STD_LOGIC; --PORT READ
-        INPUT_MEM_TO_REG : IN STD_LOGIC;
-        INPUT_RETURN : IN STD_LOGIC;
-        INPUT_CALL : IN STD_LOGIC;
-        -----------------
+			-------------- INPUT SIGNALS
+			INPUT_MEM_PC : IN STD_LOGIC;
+			CLK : IN STD_LOGIC;
+			RESET : IN STD_LOGIC;
+			EXEP_STACK_POINTER : IN STD_LOGIC;
+			INVALID_ADD_BIT : IN STD_LOGIC;
+			INPUT_PC_TO_STACK : IN STD_LOGIC;
+			INPUT_RTI : IN STD_LOGIC;
+			INPUT_WB : IN STD_LOGIC;
+			INPUT_LOAD_IMM : IN STD_LOGIC;
+			INPUT_PORT_READ : IN STD_LOGIC; --PORT READ
+			INPUT_MEM_TO_REG : IN STD_LOGIC;
+			INPUT_RETURN : IN STD_LOGIC;
+			INPUT_CALL : IN STD_LOGIC;
+			-----------------
 
-        ---------------PORT INPUT:
-        INPUT_PORT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-	MUX_RSRC2_DATA_IN : IN STD_LOGIC_VECTOR(31 DOWNTO 0);  --------------UPDATE
-        ---------------
+			---------------PORT INPUT:
+			INPUT_PORT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
+			MUX_RSRC2_DATA_IN : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --------------UPDATE
+			---------------
 
-        --------------------------------------------- OUTPUTS -----------------------------
-        --------------------STACK/INTERRUPT
-        OUTPUT_STACK : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); --STACK OUT
-        OUTPUT_INTERRUPT : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); --OUT INT
-        STACK_DATA_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        -------------------
+			--------------------------------------------- OUTPUTS -----------------------------
+			--------------------STACK/INTERRUPT
+			OUTPUT_STACK : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); --STACK OUT
+			OUTPUT_INTERRUPT : OUT STD_LOGIC_VECTOR(1 DOWNTO 0); --OUT INT
+			STACK_DATA_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+			-------------------
 
-        ---------------------MEM READ/WRITE
-        OUTPUT_MEM_READ : OUT STD_LOGIC;
-        OUTPUT_MEM_WRITE : OUT STD_LOGIC;
-        --------------------
+			---------------------MEM READ/WRITE
+			OUTPUT_MEM_READ : OUT STD_LOGIC;
+			OUTPUT_MEM_WRITE : OUT STD_LOGIC;
+			--------------------
 
-        ------------------PROGRAM COUNTER
-        PC_DATA_32BIT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        ------------------
+			------------------PROGRAM COUNTER
+			PC_DATA_32BIT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+			------------------
 
-        --------------------ALU RESULT
-        ALU_RESULT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        -------------------
+			--------------------ALU RESULT
+			ALU_RESULT_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+			-------------------
 
-        --------------------OFFSET/IMMEDIATE
-        OFFSET_IMM_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        ---------------------
+			--------------------OFFSET/IMMEDIATE
+			OFFSET_IMM_OUT : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+			---------------------
 
-        ---------------------ADDRESSES
-        --INPUT ADRRESSS
-        ADDRESS_RSRC1_OUT : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ADDRESS_RSRC2_OUT : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        ADDRESS_RDST_OUT : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
-        --------------------------------
+			---------------------ADDRESSES
+			--INPUT ADRRESSS
+			ADDRESS_RSRC1_OUT : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+			ADDRESS_RSRC2_OUT : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+			ADDRESS_RDST_OUT : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+			--------------------------------
 
-        ----------------------RSRC2
-        OUTPUT_RSRC2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        ----------------------
+			----------------------RSRC2
+			OUTPUT_RSRC2 : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+			----------------------
 
-        ---------------PORT INPUT:
-        OUTOUT_PORT_IN : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
-        -----------------
+			---------------PORT INPUT:
+			OUTOUT_PORT_IN : OUT STD_LOGIC_VECTOR (31 DOWNTO 0);
+			-----------------
 
-        -------------- INPUT SIGNALS
-        OUTPUT_MEM_PC : OUT STD_LOGIC;
-        --CLK:  OUT STD_LOGIC;
-        --RESET: OUT STD_LOGIC; 
-        EXEP_STACK_POINTER_OUT : OUT STD_LOGIC;
-        OUTPUT_PC_TO_STACK : OUT STD_LOGIC;
-        OUTPUT_RTI : OUT STD_LOGIC;
-        OUTPUT_WB : OUT STD_LOGIC;
-        OUTPUT_LOAD_IMM : OUT STD_LOGIC;
-        OUTPUT_PORT_READ : OUT STD_LOGIC; --PORT READ
-        OUTPUT_MEM_TO_REG : OUT STD_LOGIC;
-        OUTPUT_RETURN : OUT STD_LOGIC;
-        OUTPUT_CALL : OUT STD_LOGIC;
-        -----------------
-        flags_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
-        flags_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-	MUX_RSRC2_DATA_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)   --------------UPDATE
+			-------------- INPUT SIGNALS
+			OUTPUT_MEM_PC : OUT STD_LOGIC;
+			--CLK:  OUT STD_LOGIC;
+			--RESET: OUT STD_LOGIC; 
+			EXEP_STACK_POINTER_OUT : OUT STD_LOGIC;
+			OUTPUT_PC_TO_STACK : OUT STD_LOGIC;
+			OUTPUT_RTI : OUT STD_LOGIC;
+			OUTPUT_WB : OUT STD_LOGIC;
+			OUTPUT_LOAD_IMM : OUT STD_LOGIC;
+			OUTPUT_PORT_READ : OUT STD_LOGIC; --PORT READ
+			OUTPUT_MEM_TO_REG : OUT STD_LOGIC;
+			OUTPUT_RETURN : OUT STD_LOGIC;
+			OUTPUT_CALL : OUT STD_LOGIC;
+			-----------------
+			flags_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
+			flags_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
+			MUX_RSRC2_DATA_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) --------------UPDATE
 		);
 	END COMPONENT;
 	------------SIGNALS
@@ -403,15 +406,13 @@ BEGIN
 	MUX1 : MUX8X1 PORT MAP(RSCR1_DATA, MEM_WB_BUFF_MEMORY_VAL, EX_MEM_BUFF_ALU, MEM_WB_BUFF_ALU, EX_MEM_BUFF_IMM, MEM_WB_BUFF_IMM, EX_MEM_PORT_IN, MEM_WB_PORT_IN, FU_OUT_1, MUX1_OUT);
 
 	MUX2_INTER : MUX8X1 PORT MAP(RSCR2_DATA, MEM_WB_BUFF_MEMORY_VAL, EX_MEM_BUFF_ALU, MEM_WB_BUFF_ALU, EX_MEM_BUFF_IMM, MEM_WB_BUFF_IMM, EX_MEM_PORT_IN, MEM_WB_PORT_IN, FU_OUT_2, INTERM_MUX2_OUT);
-	
-	
-	
+
 	---MUX2X1
 	MUX4 : mux2 PORT MAP(OFFEST_IMM, INTERM_MUX2_OUT, ALU_SRC, MUX2_OUT);
 	---FORWARDING UNIT
 	FU : FORWARD_UNIT PORT MAP(E_M_BUFFER_WB, M_WB_BUFFER_WB, E_MEM_BUFFER_PortRead, M_WB_BUFFER_PortRead, M_WB_BUFFER_MemRead, E_M_BUFFER_LDM, M_WB_BUFFER_LDM, D_E_BUFFER_SRC1, D_E_BUFFER_SRC2, E_MEM_BUFFER_DEST, M_WB_BUFFER_DEST, FU_OUT_1, FU_OUT_2);
 	---JDU
-	JDU : JMP_DETECT_UNIT PORT MAP(FLAGS_INTERM_OUT, OP_CODE(4 DOWNTO 3), OP_CODE(2 DOWNTO 0), IS_JUMP_SIG, FLAGS_OUT_JDU);
+	JDU : JMP_DETECT_UNIT PORT MAP(buffer_disable_in, FLAGS_INTERM_OUT, OP_CODE(4 DOWNTO 3), OP_CODE(2 DOWNTO 0), IS_JUMP_SIG, FLAGS_OUT_JDU);
 	-- ALU
 	ALU_X : ALU PORT MAP(OP_CODE, MUX1_OUT, MUX2_OUT, ALU_RESULT_INTERM, FLAGS_INTERM_OUT, FLAGS_INTERM_IN, '1');
 

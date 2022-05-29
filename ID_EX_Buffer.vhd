@@ -77,7 +77,7 @@ STRUC_HAZARD_id_ex: generic_register_rising generic map(1) port map (
 );
 
 
-reset<= rst or jump or address_out_of_bound or empty_stack;
+reset<= rst or address_out_of_bound or empty_stack;
 int_id_ex_buffer: generic_register_rising generic map(2) port map (
         clk => clock,
         rst => reset,

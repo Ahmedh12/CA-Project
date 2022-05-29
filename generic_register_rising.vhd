@@ -19,7 +19,7 @@ END generic_register_rising;
 
 ARCHITECTURE a_generic_register_rising OF generic_register_rising IS
 BEGIN
-    PROCESS (clk, rst)
+    PROCESS (clk)
     BEGIN
         IF rst = '1' THEN
             data_out <= (OTHERS => '0');

@@ -55,7 +55,7 @@ ENTITY EXECUTE_MEMORY_BUFFER IS
 
         ---------------PORT INPUT:
         INPUT_PORT_IN : IN STD_LOGIC_VECTOR (31 DOWNTO 0);
-	MUX_RSRC2_DATA_IN : IN STD_LOGIC_VECTOR(31 DOWNTO 0);  --------------UPDATE
+        MUX_RSRC2_DATA_IN : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --------------UPDATE
         ---------------
 
         --------------------------------------------- OUTPUTS -----------------------------
@@ -113,7 +113,7 @@ ENTITY EXECUTE_MEMORY_BUFFER IS
         -----------------
         flags_in : IN STD_LOGIC_VECTOR(3 DOWNTO 0);
         flags_out : OUT STD_LOGIC_VECTOR(3 DOWNTO 0);
-	MUX_RSRC2_DATA_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)   --------------UPDATE
+        MUX_RSRC2_DATA_OUT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0) --------------UPDATE
     );
 END ENTITY EXECUTE_MEMORY_BUFFER;
 
@@ -154,7 +154,7 @@ BEGIN
                 OUTPUT_RTI <= '0';
 
                 flags_out <= (OTHERS => '0');
-		MUX_RSRC2_DATA_OUT <= (OTHERS => '0');  --------------UPDATE
+                MUX_RSRC2_DATA_OUT <= (OTHERS => '0'); --------------UPDATE
 
             ELSE
 
@@ -186,8 +186,8 @@ BEGIN
                 EXEP_STACK_POINTER_OUT <= EXEP_STACK_POINTER;
 
                 flags_out <= flags_in;
-		MUX_RSRC2_DATA_OUT <= MUX_RSRC2_DATA_IN;
-                
+                MUX_RSRC2_DATA_OUT <= MUX_RSRC2_DATA_IN;
+
             END IF;
         END IF;
     END PROCESS;

@@ -155,6 +155,7 @@ ARCHITECTURE arch_Processor OF Processor IS
                         --BUFF4 MEM_WB_BUFF
                         --BUFF3 EX_MEM_BUFF
                         ----MUX1
+                        buffer_disable_in : IN STD_LOGIC;
                         RSCR1_DATA : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --000
 
                         MEM_WB_BUFF_MEMORY_VAL : IN STD_LOGIC_VECTOR(31 DOWNTO 0); --001
@@ -612,7 +613,7 @@ BEGIN
                 buff4_addr_exception => ADDRESS_IS_INVALID_BUFF4_OUT,
 
                 is_jump => is_Jump_out, -- is_jump signal from execute stage
-                jump_address => OFFSET_IMM_OUT, --jump address from execute stage
+                jump_address => buf_offset_immediate_out_signal, --jump address from execute stage
                 buff2_structural_hazard => buff2_structural_hazard_OUT_SIG(0),
                 mem_to_pc => MEM_TO_PC_BUFF4_OUT,
                 mem_out => MEMORY_DATA_OUT,
@@ -706,6 +707,7 @@ BEGIN
         OP_CODE_DATA <= buf_family_code_out_signal & buf_func_code_out_signal;
 
         EXECUTE_STAGE : EX_STAGE PORT MAP(
+                buffer_disable_in =>buffer_disable_out_decode_signal,
                 RSCR1_DATA => buf_rsrc1_signal, --USED FORM DECODE
                 MEM_WB_BUFF_MEMORY_VAL => DATA_FROM_MEMORY_BUFF4_OUT, -- --USED FROM MEM BUFF --------------------------
                 EX_MEM_BUFF_ALU => ALU_RESULT_OUT, --USED  --------------------------------------
