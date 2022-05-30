@@ -226,7 +226,7 @@ BEGIN
     );
     id_ex_component : id_ex_buffer PORT MAP(
         clock => clock,
-        rst => flush_signal,
+        rst => '0',
         buffer_enable => buffer_enable_signal,
         fired_signals => cu_fired_signals,
         data_in_Rsrc1 => rsrc1_buffer_in,
