@@ -31,8 +31,28 @@ END ENTITY WB_STAGE;
 
 ARCHITECTURE ARCH_WB_STAGE OF WB_STAGE IS
 
-BEGIN
+	COMPONENT Swap_Controller IS
+		PORT (
+			clk : IN STD_LOGIC;
+			rst : IN STD_LOGIC;
 
+			Data1 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+			Data2 : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+
+			Data1Addr : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+			Data2Addr : IN STD_LOGIC_VECTOR(2 DOWNTO 0);
+
+			DataOut : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			DataOutAddr : OUT STD_LOGIC_VECTOR(2 DOWNTO 0);
+
+			swapBob : IN STD_LOGIC
+		);
+	END COMPONENT;
+
+	SIGNAL state : STD_LOGIC := '0';
+
+BEGIN
+	--swapper : Swap_Controller PORT MAP(clk, rst, );
 	PROCESS (clk)
 	BEGIN
 		IF (rising_edge(clk)) THEN

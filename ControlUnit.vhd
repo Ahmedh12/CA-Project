@@ -34,7 +34,7 @@ ARCHITECTURE control_unit_arch OF control_unit IS
 	CONSTANT out_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "01001";
 	CONSTANT in_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "01000";
 	CONSTANT mov_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "00011";
-	------------CONSTANT swap_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "01001";
+	--CONSTANT swap_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "01001";
 	CONSTANT add_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "00100";
 	CONSTANT sub_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "00110";
 	CONSTANT and_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "00101";
@@ -53,7 +53,7 @@ ARCHITECTURE control_unit_arch OF control_unit IS
 	CONSTANT int_index_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "11110";
 	CONSTANT rti_operation : STD_LOGIC_VECTOR(4 DOWNTO 0) := "11111";
         --SIGNAL fired_signals :  STD_LOGIC_VECTOR(17 DOWNTO 0);
-	--SIGNAL opcode: STD_LOGIC_VECTOR(4 downto 0);
+	--SIGNAL opcodeSignal: STD_LOGIC_VECTOR(4 downto 0);
 BEGIN
 	   
 	WITH opcode SELECT
