@@ -27,6 +27,7 @@ BEGIN
         ELSIF rising_edge(clk) THEN
             if flush_in_reg='1' then 
                  data_out <= (OTHERS => '0');
+             END IF;
             IF write_en = '1' THEN
                 data_out <= data_in;
             END IF;
