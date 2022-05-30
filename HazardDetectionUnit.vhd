@@ -18,6 +18,7 @@ END hazard_detection_unit;
 
 ARCHITECTURE hazard_detection_unit_arch OF hazard_detection_unit IS
 BEGIN
+	flush<='0';
 	process(id_ex_mem_read, id_ex_rdst, if_id_rsrc1, if_id_rsrc2)
     begin
         if (id_ex_mem_read = "1" and opcode /= "10000" and opcode/="10001" and((if_id_rsrc1=id_ex_rdst) or (if_id_rsrc2=id_ex_rdst) )) then
