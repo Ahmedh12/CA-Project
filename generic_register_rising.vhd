@@ -12,6 +12,7 @@ ENTITY generic_register_rising IS
         clk : IN STD_LOGIC;
         rst : IN STD_LOGIC;
         write_en : IN STD_LOGIC;
+        flush_in_reg:  IN STD_LOGIC;
         data_in : IN STD_LOGIC_VECTOR(width - 1 DOWNTO 0);
         data_out : OUT STD_LOGIC_VECTOR(width - 1 DOWNTO 0)
     );
@@ -24,6 +25,8 @@ BEGIN
         IF rst = '1' THEN
             data_out <= (OTHERS => '0');
         ELSIF rising_edge(clk) THEN
+            if flush_in_reg='1' then 
+                 data_out <= (OTHERS => '0');
             IF write_en = '1' THEN
                 data_out <= data_in;
             END IF;
