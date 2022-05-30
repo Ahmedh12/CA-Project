@@ -22,10 +22,10 @@ ARCHITECTURE a_generic_register_rising OF generic_register_rising IS
 BEGIN
     PROCESS (clk)
     BEGIN
-        IF rst = '1' THEN
+        IF rising_edge(clk) THEN
+            IF rst = '1' THEN
             data_out <= (OTHERS => '0');
-        ELSIF rising_edge(clk) THEN
-            if flush_in_reg='1' then 
+            elsif flush_in_reg='1' then 
                  data_out <= (OTHERS => '0');
             
             ElSIF write_en = '1' THEN
